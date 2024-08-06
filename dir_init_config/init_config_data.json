@@ -1,0 +1,2158 @@
+[
+    {
+        "children": [
+            {
+                "codeFilePath": "kninjllm/llm_knowledgeUploader/Local_interface.py",
+                "components": [],
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "Upload_interface",
+                "initParams": [
+                    {
+                        "name": "interface_domain",
+                        "type": "str\n(required)\ninterface type\nformat: \nKnowledge domain/knowledge interface type\nexample: \nfactual/wikipedia",
+                        "value": ""
+                    },
+                    {
+                        "name": "interface_type",
+                        "type": "str\n(required)\ngoogle\nwiki\nlocal",
+                        "value": ""
+                    },
+                    {
+                        "name": "search_url",
+                        "type": "str\n(required)\nIf interface_type is google,search_url is @xxx,example: @uptodate\nIf interface_type is wiki,search_url is sparql endpoint,example: https://query.wikidata.org/sparql\nIf interface_type is local,search_url is server path to jsonl file,example: /xxx/xxx/xx.jsonl",
+                        "value": ""
+                    }
+                ],
+                "inputParams": [],
+                "name": "OnlineInterface",
+                "outputParams": [
+                    {
+                        "name": "interface_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "type": "Upload_interface"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_knowledgeUploader/KnowledgeUploader.py",
+                "components": [],
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "Upload_Text",
+                "initParams": [
+                    {
+                        "name": "Upload data files",
+                        "type": "upload",
+                        "value": ".txt,.pdf,.tsv,.doc,.docx,.md"
+                    },
+                    {
+                        "name": "savePath",
+                        "type": "str\n(unchanged)\nFile upload temporary cache path",
+                        "value": "dir_knowledge_temp_upload_text/"
+                    }
+                ],
+                "inputParams": [],
+                "name": "LocalText",
+                "outputParams": [
+                    {
+                        "name": "path",
+                        "type": "str",
+                        "value": ""
+                    }
+                ],
+                "type": "Upload_Text"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_knowledgeUploader/KnowledgeUploader.py",
+                "components": [],
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "Upload_Table",
+                "initParams": [
+                    {
+                        "name": "Upload data files",
+                        "type": "upload",
+                        "value": ".xlsx,.xls,.json,.jsonl"
+                    },
+                    {
+                        "name": "savePath",
+                        "type": "str\n(unchanged)\nFile upload temporary cache path",
+                        "value": "dir_knowledge_temp_upload_table/"
+                    }
+                ],
+                "inputParams": [],
+                "name": "LocalTable",
+                "outputParams": [
+                    {
+                        "name": "path",
+                        "type": "str",
+                        "value": ""
+                    }
+                ],
+                "type": "Upload_Table"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_knowledgeUploader/KnowledgeUploader.py",
+                "components": [],
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "Upload_KG",
+                "initParams": [
+                    {
+                        "name": "Upload data files",
+                        "type": "upload",
+                        "value": ".json,.jsonl"
+                    },
+                    {
+                        "name": "savePath",
+                        "type": "str\n(unchanged)\nFile upload temporary cache path",
+                        "value": "dir_knowledge_temp_upload_kg/"
+                    }
+                ],
+                "inputParams": [],
+                "name": "LocalKG",
+                "outputParams": [
+                    {
+                        "name": "path",
+                        "type": "str",
+                        "value": ""
+                    }
+                ],
+                "type": "Upload_KG"
+            }
+        ],
+        "dirPath": "llm_knowledgeUploader",
+        "ico": "el-icon-video-pause",
+        "id": "KnowledgeUploader",
+        "name": "KnowledgeUploader",
+        "open": true,
+        "type": "KnowledgeUploader"
+    },
+    {
+        "children": [
+            {
+                "codeFilePath": "kninjllm/llm_preprocess/TextPreprecess.py",
+                "components": [],
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "TextPreprecess",
+                "initParams": [],
+                "inputParams": [
+                    {
+                        "name": "path",
+                        "type": "str",
+                        "value": ""
+                    }
+                ],
+                "name": "TextConvertor",
+                "outputParams": [
+                    {
+                        "name": "documents",
+                        "type": "List[Dict[str, Any]]",
+                        "value": ""
+                    }
+                ],
+                "type": "TextPreprecess"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_preprocess/TablePreprecess.py",
+                "components": [],
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "TablePreprecess",
+                "initParams": [],
+                "inputParams": [
+                    {
+                        "name": "path",
+                        "type": "str",
+                        "value": ""
+                    }
+                ],
+                "name": "TableConvertor",
+                "outputParams": [
+                    {
+                        "name": "documents",
+                        "type": "List[Dict[str, Any]]",
+                        "value": ""
+                    }
+                ],
+                "type": "TablePreprecess"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_preprocess/KgPreprecess.py",
+                "components": [],
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "KgPreprecess",
+                "initParams": [],
+                "inputParams": [
+                    {
+                        "name": "path",
+                        "type": "str",
+                        "value": ""
+                    }
+                ],
+                "name": "KGConvertor",
+                "outputParams": [
+                    {
+                        "name": "documents",
+                        "type": "List[Dict[str, Any]]",
+                        "value": ""
+                    }
+                ],
+                "type": "KgPreprecess"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_preprocess/InterfacePreprecess.py",
+                "components": [],
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "InterfacePreprecess",
+                "initParams": [],
+                "inputParams": [
+                    {
+                        "name": "interface_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "name": "Interfacer",
+                "outputParams": [
+                    {
+                        "name": "interface",
+                        "type": "Any",
+                        "value": ""
+                    }
+                ],
+                "type": "InterfacePreprecess"
+            }
+        ],
+        "dirPath": "llm_preprocess",
+        "ico": "el-icon-video-pause",
+        "id": "KnowledgePreprocessor",
+        "name": "KnowledgePreprocessor",
+        "open": true,
+        "type": "KnowledgePreprocessor"
+    },
+    {
+        "children": [
+            {
+                "codeFilePath": "kninjllm/llm_linearizer/LinearizerToText.py",
+                "components": [],
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "UnifiedVerbalizer",
+                "initParams": [
+                    {
+                        "name": "knowledge_line_count",
+                        "type": "int\n(required)\nAmount of knowledge linked to this component",
+                        "value": ""
+                    },
+                    {
+                        "name": "max_length",
+                        "type": "int\n(selectable)\nMaximum number of tokens for text",
+                        "value": "100"
+                    }
+                ],
+                "inputParams": [
+                    {
+                        "name": "value",
+                        "type": "List[Any]",
+                        "value": ""
+                    }
+                ],
+                "name": "UnifiedVerbalizer",
+                "outputParams": [
+                    {
+                        "name": "final_result",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "type": "UnifiedVerbalizer"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_linearizer/UnifiedInterface.py",
+                "components": [],
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "UnifiedQuerier",
+                "initParams": [
+                    {
+                        "name": "knowledge_line_count",
+                        "type": "int\n(required)\nNumber of query interfaces linked to this component",
+                        "value": ""
+                    },
+                    {
+                        "name": "max_length",
+                        "type": "int\n(unchanged)",
+                        "value": ""
+                    }
+                ],
+                "inputParams": [
+                    {
+                        "name": "value",
+                        "type": "Any",
+                        "value": ""
+                    }
+                ],
+                "name": "UnifiedQuerier",
+                "outputParams": [
+                    {
+                        "name": "final_result",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "type": "UnifiedQuerier"
+            }
+        ],
+        "dirPath": "llm_linearizer",
+        "ico": "el-icon-video-pause",
+        "id": "KnowledgeIntegrator",
+        "name": "KnowledgeIntegrator",
+        "open": true,
+        "type": "KnowledgeIntegrator"
+    },
+    {
+        "children": [
+            {
+                "codeFilePath": "kninjllm/llm_store_saver/SaveToElasticSearchDB.py",
+                "components": [],
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "SaveToElasticSearchDB",
+                "initParams": [
+                    {
+                        "name": "index",
+                        "type": "str\n(required)\nES index",
+                        "value": ""
+                    },
+                    {
+                        "name": "ebbedding_retriever_nameList",
+                        "type": "List[str]\n(selectable)\nA retriever that requires embedding\noptional parameters:\nBGE,contriever,DPR,E5,BERT",
+                        "value": "[]"
+                    }
+                ],
+                "inputParams": [
+                    {
+                        "name": "documents",
+                        "type": "List[Dict[str,Any]]",
+                        "value": ""
+                    }
+                ],
+                "name": "SaveToElasticSearch",
+                "outputParams": [
+                    {
+                        "name": "final_result",
+                        "type": "Dict[str,Any]",
+                        "value": ""
+                    }
+                ],
+                "type": "SaveToElasticSearchDB"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_store_saver/SaveToServer.py",
+                "components": [],
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "SaveToServer",
+                "initParams": [
+                    {
+                        "name": "savePath",
+                        "type": "str\n(required)\nThe folder location to store to the server",
+                        "value": ""
+                    }
+                ],
+                "inputParams": [
+                    {
+                        "name": "documents",
+                        "type": "List[Dict[str, Any]]",
+                        "value": ""
+                    }
+                ],
+                "name": "SaveToServer",
+                "outputParams": [
+                    {
+                        "name": "final_result",
+                        "type": "Dict[str,Any]",
+                        "value": ""
+                    }
+                ],
+                "type": "SaveToServer"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_store_saver/SaveQueryInterface.py",
+                "components": [],
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "SaveQueryInterface",
+                "initParams": [],
+                "inputParams": [
+                    {
+                        "name": "interface_list",
+                        "type": "List[Dict[str,Any]]",
+                        "value": ""
+                    }
+                ],
+                "name": "SaveQueryInterface",
+                "outputParams": [
+                    {
+                        "name": "final_result",
+                        "type": "Dict[str,Any]",
+                        "value": ""
+                    }
+                ],
+                "type": "SaveQueryInterface"
+            }
+        ],
+        "dirPath": "llm_database",
+        "ico": "el-icon-video-pause",
+        "id": "KnowledgeSaver",
+        "name": "KnowledgeSaver",
+        "open": true,
+        "type": "KnowledgeSaver"
+    },
+    {
+        "children": [
+            {
+                "codeFilePath": "kninjllm/llm_dataloader/knowledgeLoader.py",
+                "ico": "el-icon-time",
+                "id": "KnowledgeCombiner",
+                "initParams": [
+                    {
+                        "name": "tag",
+                        "type": "str\n(required)\nknowledge tag",
+                        "value": ""
+                    },
+                    {
+                        "name": "knowledge_path",
+                        "type": "str\n(selectable)\nPlease fill in this box if you load knowledge from the server",
+                        "value": ""
+                    },
+                    {
+                        "name": "elasticIndex",
+                        "type": "str\n(selectable)\nPlease fill in this box if you load knowledge from the ES",
+                        "value": ""
+                    }
+                ],
+                "inputParams": [],
+                "name": "KnowledgeCombiner",
+                "outputParams": [
+                    {
+                        "name": "knowledge_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "type": "KnowledgeCombiner"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_dataloader/knowledgeLoader.py",
+                "ico": "el-icon-time",
+                "id": "Knowledge_wikipedia_liner",
+                "initParams": [
+                    {
+                        "name": "tag",
+                        "type": "str\n(unchanged)\nknowledge tag",
+                        "value": "Text database: wikipedia"
+                    },
+                    {
+                        "name": "knowledge_path",
+                        "type": "str\n(unchanged)",
+                        "value": ""
+                    },
+                    {
+                        "name": "elasticIndex",
+                        "type": "str\n(unchanged)\nES index",
+                        "value": "wiki_pedia"
+                    }
+                ],
+                "inputParams": [],
+                "name": "Knowledge_wikipedia",
+                "outputParams": [
+                    {
+                        "name": "knowledge_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "type": "Knowledge_wikipedia"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_dataloader/knowledgeLoader.py",
+                "ico": "el-icon-time",
+                "id": "Knowledge_wikipedia_wikidata",
+                "initParams": [
+                    {
+                        "name": "tag",
+                        "type": "str\n(unchanged)\nknowledge tag",
+                        "value": "Text database: wikipedia \nKnowledge map: wikidata"
+                    },
+                    {
+                        "name": "knowledge_path",
+                        "type": "str\n(unchanged)",
+                        "value": ""
+                    },
+                    {
+                        "name": "elasticIndex",
+                        "type": "str\n(unchanged)",
+                        "value": "wiki_pedia_data"
+                    }
+                ],
+                "inputParams": [],
+                "name": "Knowledge_wikipedia_wikidata",
+                "outputParams": [
+                    {
+                        "name": "knowledge_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "type": "Knowledge_wikipedia_wikidata"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_dataloader/knowledgeLoader.py",
+                "ico": "el-icon-time",
+                "id": "Knowledge_wikipedia_wikidata_wikitable",
+                "initParams": [
+                    {
+                        "name": "tag",
+                        "type": "str\n(unchanged)\nknowledge tag",
+                        "value": "Text database: wikipedia \nKnowledge map: wikidata \nTable: wikitable"
+                    },
+                    {
+                        "name": "knowledge_path",
+                        "type": "str\n(unchanged)",
+                        "value": ""
+                    },
+                    {
+                        "name": "elasticIndex",
+                        "type": "str\n(unchanged)",
+                        "value": "wiki_pedia_data_table"
+                    }
+                ],
+                "inputParams": [],
+                "name": "Knowledge_wikipedia_wikidata_wikitable",
+                "outputParams": [
+                    {
+                        "name": "knowledge_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "type": "Knowledge_wikipedia_wikidata_wikitable"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_dataloader/KnowledgeSelector.py",
+                "ico": "el-icon-time",
+                "id": "KnowledgeSelector",
+                "initParams": [
+                    {
+                        "name": "tag",
+                        "type": "str\n(unchanged)\n interface tag",
+                        "value": "Wikipedia_Interface \nWikidata_Interface \nUptodate_Interface \nPhysics_Interface \nCk12_Interface \nFlashcard_Interface \nScienceqaBio_Interface \nScienceqaPhy_Interface"
+                    }
+                ],
+                "inputParams": [],
+                "name": "KnowledgeSelector",
+                "outputParams": [
+                    {
+                        "name": "knowledge_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "type": "KnowledgeSelector"
+            }
+        ],
+        "dirPath": "llm_dataloader",
+        "ico": "el-icon-video-pause",
+        "id": "Knowledge",
+        "name": "Knowledge",
+        "open": true,
+        "type": "Knowledge"
+    },
+    {
+        "children": [
+            {
+                "codeFilePath": "kninjllm/llm_retriever/in_memory/bm25_retriever.py",
+                "components": [],
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "Bm25MemoryRetriever",
+                "initParams": [
+                    {
+                        "name": "model_path",
+                        "type": "str\n(selectable)\nmodel_path",
+                        "value": ""
+                    },
+                    {
+                        "name": "top_k",
+                        "type": "int\n(selectable)\nSort by score and return to the top k items",
+                        "value": 3
+                    },
+                    {
+                        "name": "executeType",
+                        "type": "str\n(unchanged)",
+                        "value": "infer"
+                    }
+                ],
+                "inputParams": [
+                    {
+                        "name": "query_obj",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "knowledge_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "test_data_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "train_data_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "dev_data_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "name": "BM25MemoryRetriever",
+                "outputParams": [
+                    {
+                        "name": "final_result",
+                        "type": "List[List[Dict[str, Any]]]",
+                        "value": ""
+                    }
+                ],
+                "type": "Bm25MemoryRetriever"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_retriever/elasticsearch/bm25_retriever.py",
+                "components": [],
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "Bm25EsRetriever",
+                "initParams": [
+                    {
+                        "name": "model_path",
+                        "type": "str\n(selectable)\nmodel_path",
+                        "value": ""
+                    },
+                    {
+                        "name": "top_k",
+                        "type": "int\n(selectable)\nSort by score and return to the top k items",
+                        "value": 3
+                    },
+                    {
+                        "name": "executeType",
+                        "type": "str\n(unchanged)",
+                        "value": "infer"
+                    }
+                ],
+                "inputParams": [
+                    {
+                        "name": "query_obj",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "knowledge_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "test_data_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "train_data_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "dev_data_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "name": "BM25ESRetriever",
+                "outputParams": [
+                    {
+                        "name": "final_result",
+                        "type": "List[List[Dict[str, Any]]]",
+                        "value": ""
+                    }
+                ],
+                "type": "Bm25EsRetriever"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_retriever/contriever/Contriever_retriever.py",
+                "components": [],
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "ContrieverRetriever",
+                "initParams": [
+                    {
+                        "name": "model_path",
+                        "type": "str\n(selectable)\nmodel_path",
+                        "value": ""
+                    },
+                    {
+                        "name": "top_k",
+                        "type": "int\n(selectable)\nSort by score and return to the top k items",
+                        "value": 3
+                    },
+                    {
+                        "name": "executeType",
+                        "type": "str\n(required)\naction type,optional parameters: \ninfer\nevaluate\ntrain",
+                        "value": ""
+                    }
+                ],
+                "inputParams": [
+                    {
+                        "name": "query_obj",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "knowledge_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "test_data_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "train_data_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "dev_data_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "name": "ContrieverRetriever",
+                "outputParams": [
+                    {
+                        "name": "final_result",
+                        "type": "List[List[Dict[str, Any]]]",
+                        "value": ""
+                    }
+                ],
+                "type": "ContrieverRetriever"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_retriever/DPR/DPR_retriever.py",
+                "components": [],
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "DPR_retriever",
+                "initParams": [
+                    {
+                        "name": "model_path",
+                        "type": "str\n(selectable)\nmodel_path",
+                        "value": ""
+                    },
+                    {
+                        "name": "top_k",
+                        "type": "int\n(selectable)\nSort by score and return to the top k items",
+                        "value": 3
+                    },
+                    {
+                        "name": "executeType",
+                        "type": "str\n(required)\naction type,optional parameters:  \ninfer\nevaluate\ntrain",
+                        "value": ""
+                    }
+                ],
+                "inputParams": [
+                    {
+                        "name": "query_obj",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "knowledge_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "test_data_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "train_data_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "dev_data_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "name": "DPRRetriever",
+                "outputParams": [
+                    {
+                        "name": "final_result",
+                        "type": "List[List[Dict[str, Any]]]",
+                        "value": ""
+                    }
+                ],
+                "type": "DPR_retriever"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_retriever/BGE/BGE_retriever.py",
+                "components": [],
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "BGE_retriever",
+                "initParams": [
+                    {
+                        "name": "model_path",
+                        "type": "str\n(selectable)\nmodel_path",
+                        "value": ""
+                    },
+                    {
+                        "name": "top_k",
+                        "type": "int\n(selectable)\nSort by score and return to the top k items",
+                        "value": 3
+                    },
+                    {
+                        "name": "executeType",
+                        "type": "str\n(required)\naction type,optional parameters:  \ninfer\nevaluate\ntrain",
+                        "value": ""
+                    }
+                ],
+                "inputParams": [
+                    {
+                        "name": "query_obj",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "knowledge_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "test_data_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "train_data_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "dev_data_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "name": "BGERetriever",
+                "outputParams": [
+                    {
+                        "name": "final_result",
+                        "type": "List[List[Dict[str, Any]]]",
+                        "value": ""
+                    }
+                ],
+                "type": "BGE_retriever"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_retriever/BERT/BERT_retriever.py",
+                "components": [],
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "BERT_retriever",
+                "initParams": [
+                    {
+                        "name": "model_path",
+                        "type": "str\n(selectable)\nmodel_path",
+                        "value": ""
+                    },
+                    {
+                        "name": "top_k",
+                        "type": "int\n(selectable)\nSort by score and return to the top k items",
+                        "value": 3
+                    },
+                    {
+                        "name": "executeType",
+                        "type": "str\n(required)\naction type,optional parameters:  \ninfer\nevaluate\ntrain",
+                        "value": ""
+                    }
+                ],
+                "inputParams": [
+                    {
+                        "name": "query_obj",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "knowledge_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "test_data_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "train_data_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "dev_data_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "name": "BERTRetriever",
+                "outputParams": [
+                    {
+                        "name": "final_result",
+                        "type": "List[List[Dict[str, Any]]]",
+                        "value": ""
+                    }
+                ],
+                "type": "BERT_retriever"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_retriever/E5/E5_retriever.py",
+                "components": [],
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "E5_retriever",
+                "initParams": [
+                    {
+                        "name": "model_path",
+                        "type": "str\n(selectable)\nmodel_path",
+                        "value": ""
+                    },
+                    {
+                        "name": "top_k",
+                        "type": "int\n(selectable)\nSort by score and return to the top k items",
+                        "value": 3
+                    },
+                    {
+                        "name": "executeType",
+                        "type": "str\n(required)\naction type,optional parameters:  \ninfer\nevaluate\ntrain",
+                        "value": ""
+                    }
+                ],
+                "inputParams": [
+                    {
+                        "name": "query_obj",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "knowledge_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "test_data_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "train_data_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "dev_data_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "name": "E5Retriever",
+                "outputParams": [
+                    {
+                        "name": "final_result",
+                        "type": "List[List[Dict[str, Any]]]",
+                        "value": ""
+                    }
+                ],
+                "type": "E5_retriever"
+            }
+        ],
+        "dirPath": "llm_retriever",
+        "ico": "el-icon-video-pause",
+        "id": "root_Retriever",
+        "name": "Retriever",
+        "open": true,
+        "type": "Retriever"
+    },
+    {
+        "children": [
+            {
+                "codeFilePath": "kninjllm/llm_queryGenerator/natural_language_generator.py",
+                "components": [],
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "NaturalGenerator",
+                "initParams": [],
+                "inputParams": [
+                    {
+                        "name": "query_obj",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "name": "NL Parser",
+                "outputParams": [
+                    {
+                        "name": "final_result",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "type": "NaturalGenerator"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_queryGenerator/sparql_language_generator.py",
+                "components": [],
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "SparqlGenerator",
+                "initParams": [],
+                "inputParams": [
+                    {
+                        "name": "query_obj",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "name": "Sparql Parser",
+                "outputParams": [
+                    {
+                        "name": "final_result",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "type": "SparqlGenerator"
+            }
+        ],
+        "dirPath": "llm_queryGenerator",
+        "ico": "el-icon-video-pause",
+        "id": "root_QueryParser",
+        "name": "QueryParser",
+        "open": true,
+        "type": "QueryParser"
+    },
+    {
+        "children": [
+            {
+                "codeFilePath": "kninjllm/llm_adaptiver/DetermineWhetherToRetrieve.py",
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "Special Token-Timing Judgment",
+                "initParams": [],
+                "inputParams": [],
+                "name": "Special Token-Timing Judgment",
+                "outputParams": [],
+                "type": "Special Token-Timing Judgment"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_adaptiver/SelfConsistency.py",
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "Self Consistency-Timing Judgment",
+                "initParams": [],
+                "inputParams": [],
+                "name": "Self Consistency-Timing Judgment",
+                "outputParams": [],
+                "type": "Self Consistency-Timing Judgment"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_adaptiver/DemonstrationSelection.py",
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "Example demonstration-Source Selection",
+                "initParams": [],
+                "inputParams": [],
+                "name": "Example demonstration-Source Selection",
+                "outputParams": [],
+                "type": "Example demonstration-Source Selection"
+            }
+        ],
+        "dirPath": "llm_adaptiver",
+        "ico": "el-icon-video-pause",
+        "id": "root_Generator",
+        "name": "Adaptive Interactor",
+        "open": true,
+        "type": "Adaptiver"
+    },
+    {
+        "children": [
+            {
+                "codeFilePath": "kninjllm/llm_generator/close_generator/openai_generator.py",
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "OpenAIGenerator",
+                "initParams": [
+                    {
+                        "name": "api_key",
+                        "type": "str\n(selectable)",
+                        "value": ""
+                    },
+                    {
+                        "name": "model_path",
+                        "type": "str\n(selectable)",
+                        "value": ""
+                    },
+                    {
+                        "name": "executeType",
+                        "type": "str\n(unchanged)",
+                        "value": "infer"
+                    }
+                ],
+                "inputParams": [
+                    {
+                        "name": "query_obj",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "train_data_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "dev_data_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "name": "OpenAIGenerator",
+                "outputParams": [
+                    {
+                        "name": "final_result",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "type": "OpenAIGenerator"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_generator/base_generator/self_rag/self_rag_generator.py",
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "RagGenerator",
+                "initParams": [
+                    {
+                        "name": "api_key",
+                        "type": "str\n(selectable)",
+                        "value": ""
+                    },
+                    {
+                        "name": "model_path",
+                        "type": "str\n(selectable)",
+                        "value": ""
+                    },
+                    {
+                        "name": "executeType",
+                        "type": "str\n(required)\naction type,optional parameters:\ninfer\ntrain",
+                        "value": ""
+                    }
+                ],
+                "inputParams": [
+                    {
+                        "name": "query_obj",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "train_data_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "dev_data_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "name": "RagGenerator",
+                "outputParams": [
+                    {
+                        "name": "final_result",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "type": "RagGenerator"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_generator/base_generator/llama2/component_generator_llama2.py",
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "LLama2Generator",
+                "initParams": [
+                    {
+                        "name": "api_key",
+                        "type": "str\n(selectable)",
+                        "value": ""
+                    },
+                    {
+                        "name": "model_path",
+                        "type": "str\n(selectable)",
+                        "value": ""
+                    },
+                    {
+                        "name": "executeType",
+                        "type": "str\n(unchanged)",
+                        "value": "infer"
+                    }
+                ],
+                "inputParams": [
+                    {
+                        "name": "query_obj",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "train_data_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "dev_data_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "name": "LLama2Generator",
+                "outputParams": [
+                    {
+                        "name": "final_result",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "type": "LLama2Generator"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_generator/base_generator/baichuan2/component_generator_baichuan2.py",
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "Baichuan2Generator",
+                "initParams": [
+                    {
+                        "name": "api_key",
+                        "type": "str\n(selectable)",
+                        "value": ""
+                    },
+                    {
+                        "name": "model_path",
+                        "type": "str\n(selectable)",
+                        "value": ""
+                    },
+                    {
+                        "name": "executeType",
+                        "type": "str\n(unchanged)",
+                        "value": "infer"
+                    }
+                ],
+                "inputParams": [
+                    {
+                        "name": "query_obj",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "train_data_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "dev_data_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "name": "Baichuan2Generator",
+                "outputParams": [
+                    {
+                        "name": "final_result",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "type": "Baichuan2Generator"
+            }
+        ],
+        "dirPath": "llm_generator",
+        "ico": "el-icon-video-pause",
+        "id": "root_Generator",
+        "name": "Generator",
+        "open": true,
+        "type": "Generator"
+    },
+    {
+        "children": [
+            {
+                "codeFilePath": "kninjllm/llm_common/mutiplexer.py",
+                "components": [],
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "Multiplexer",
+                "initParams": [],
+                "inputParams": [
+                    {
+                        "name": "value",
+                        "type": "Dict[str,Any]",
+                        "value": "{\"question\":\"\"}"
+                    }
+                ],
+                "name": "Multiplexer",
+                "outputParams": [
+                    {
+                        "name": "value",
+                        "type": "Dict[str,Any]",
+                        "value": ""
+                    }
+                ],
+                "style": {},
+                "type": "Multiplexer"
+            }
+        ],
+        "dirPath": "llm_common",
+        "ico": "el-icon-video-play",
+        "id": "root_Multiplexer",
+        "name": "Multiplexer",
+        "open": true,
+        "type": "Multiplexer"
+    },
+    {
+        "children": [
+            {
+                "codeFilePath": "kninjllm/llm_builder/prompt_builder.py",
+                "components": [],
+                "description": "Prompt generation based on the template",
+                "ico": "el-icon-time",
+                "id": "PromptBuilder",
+                "initParams": [
+                    {
+                        "name": "template",
+                        "type": "str\n(required)\nPython's Julia2 template string",
+                        "value": ""
+                    }
+                ],
+                "inputParams": [
+                    {
+                        "name": "query_obj",
+                        "type": "Dict[str,Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "retriever_list",
+                        "type": "List[List[Dict[str, Any]]]",
+                        "value": ""
+                    }
+                ],
+                "name": "PromptBuilder",
+                "outputParams": [
+                    {
+                        "name": "prompt_obj",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "type": "PromptBuilder"
+            }
+        ],
+        "dirPath": "llm_builder",
+        "ico": "el-icon-video-pause",
+        "id": "root_PromptBuilder",
+        "name": "PromptBuilder",
+        "open": true,
+        "type": "PromptBuilder"
+    },
+    {
+        "children": [
+            {
+                "codeFilePath": "kninjllm/llm_builder/output_builder.py",
+                "components": [],
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "OutputBuilder",
+                "initParams": [],
+                "inputParams": [
+                    {
+                        "name": "params",
+                        "type": "List[Dict[str, Any]]",
+                        "value": ""
+                    }
+                ],
+                "name": "OutputBuilder",
+                "outputParams": [
+                    {
+                        "name": "final_result",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "type": "OutputBuilder"
+            }
+        ],
+        "dirPath": "llm_builder",
+        "ico": "el-icon-video-pause",
+        "id": "root_OutputBuilder",
+        "name": "OutputBuilder",
+        "open": true,
+        "type": "OutputBuilder"
+    },
+    {
+        "children": [
+            {
+                "codeFilePath": "kninjllm/llm_router/conditional_router.py",
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "ConditionalRouter",
+                "initParams": [
+                    {
+                        "name": "max_loop_count",
+                        "type": "int\n(selectable)\nControls the maximum number of cycles of the flow chart,\nYou can use temp_loop_count and max_loop_count in routes to determine whether the flow chart has reached the maximum number of cycles",
+                        "value": 0
+                    },
+                    {
+                        "name": "routes",
+                        "type": "str\n(required)\nroutes array. Please check the document for specific rules.",
+                        "value": ""
+                    }
+                ],
+                "inputParams": [
+                    {
+                        "name": "checkData",
+                        "type": "Any",
+                        "value": ""
+                    }
+                ],
+                "name": "ConditionalRouter",
+                "outputParams": [
+                    {
+                        "name": "yes",
+                        "type": "str",
+                        "value": ""
+                    },
+                    {
+                        "name": "no",
+                        "type": "str",
+                        "value": ""
+                    }
+                ],
+                "type": "ConditionalRouter"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_router/conditional_router.py",
+                "description": "Used to determine whether the evaluation flow chart has processed all data\n Yes:yes\n No:no",
+                "ico": "el-icon-time",
+                "id": "checkEvaluateRouter",
+                "initParams": [
+                    {
+                        "name": "max_loop_count",
+                        "type": "int\n(selectable)\nControls the maximum number of cycles of the flow chart,\nYou can use temp_loop_count and max_loop_count in routes to determine whether the flow chart has reached the maximum number of cycles",
+                        "value": 0
+                    },
+                    {
+                        "name": "routes",
+                        "type": "str\n(unchanged)\nroutes array",
+                        "value": "[{\"condition\": \"{{ checkData['flag'] == 1 }}\",\"output\": \"{{ checkData['eva_result'] }}\",\"output_name\": \"yes\",\"output_type\": Dict[str,Any]},{\"condition\": \"{{  checkData['flag'] == 0 }}\",\"output\": \"{{ checkData['query_obj'] }}\",\"output_name\": \"no\",\"output_type\": Dict[str,Any]}]"
+                    }
+                ],
+                "inputParams": [
+                    {
+                        "name": "checkData",
+                        "type": "Any",
+                        "value": ""
+                    }
+                ],
+                "name": "checkEvaluateRouter",
+                "outputParams": [
+                    {
+                        "name": "yes",
+                        "type": "str",
+                        "value": ""
+                    },
+                    {
+                        "name": "no",
+                        "type": "str",
+                        "value": ""
+                    }
+                ],
+                "type": "checkEvaluateRouter"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_router/conditional_router.py",
+                "description": "Used to determine whether the linearizer has completed processing all knowledge\n Yes:yes\n No:no",
+                "ico": "el-icon-time",
+                "id": "checkLinerCountRouter",
+                "initParams": [
+                    {
+                        "name": "max_loop_count",
+                        "type": "int\n(selectable)\nControls the maximum number of cycles of the flow chart,\nYou can use temp_loop_count and max_loop_count in routes to determine whether the flow chart has reached the maximum number of cycles",
+                        "value": 0
+                    },
+                    {
+                        "name": "routes",
+                        "type": "str\n(unchanged)\nroutes array",
+                        "value": "[{\"condition\": \"{{ checkData.flag == 1 }}\",\"output\": \"{{ checkData['knowledge'] }}\",\"output_name\": \"yes\",\"output_type\": List[Dict[str,Any]]},{\"condition\": \"{{ checkData.flag == 0}}\",\"output\": \"{{ 'continue' }}\",\"output_name\": \"no\",\"output_type\": str}]"
+                    }
+                ],
+                "inputParams": [
+                    {
+                        "name": "checkData",
+                        "type": "Any",
+                        "value": ""
+                    }
+                ],
+                "name": "checkLinerRouter",
+                "outputParams": [
+                    {
+                        "name": "yes",
+                        "type": "str",
+                        "value": ""
+                    },
+                    {
+                        "name": "no",
+                        "type": "str",
+                        "value": ""
+                    }
+                ],
+                "type": "checkLinerCountRouter"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_router/conditional_router.py",
+                "description": "Used for IterativePipeline task to determine whether the maximum number of cycles has been reached,yes: yes no: no",
+                "ico": "el-icon-time",
+                "id": "IterativeRouter",
+                "initParams": [
+                    {
+                        "name": "max_loop_count",
+                        "type": "int\n(selectable)\nControls the maximum number of cycles of the flow chart,\nYou can use temp_loop_count and max_loop_count in routes to determine whether the flow chart has reached the maximum number of cycles",
+                        "value": 3
+                    },
+                    {
+                        "name": "routes",
+                        "type": "str\n(unchanged)\nroutes array",
+                        "value": "[{\"condition\": \"{{ temp_loop_count >= max_loop_count }}\",\"output\": \"{{ checkData }}\",\"output_name\": \"yes\",\"output_type\": Dict[str,Any]},{\"condition\": \"{{ temp_loop_count < max_loop_count}}\",\"output\": \"{{ {\\\"question\\\":checkData['query'].split('\t<=>\t')[0] + '\t<=>\t' + checkData['content']  } }}\",\"output_name\": \"no\",\"output_type\": Dict[str,Any]}]"
+                    }
+                ],
+                "inputParams": [
+                    {
+                        "name": "checkData",
+                        "type": "Any",
+                        "value": ""
+                    }
+                ],
+                "name": "IterativeRouter",
+                "outputParams": [
+                    {
+                        "name": "yes",
+                        "type": "str",
+                        "value": ""
+                    },
+                    {
+                        "name": "no",
+                        "type": "str",
+                        "value": ""
+                    }
+                ],
+                "type": "IterativeRouter"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_router/conditional_router.py",
+                "description": "Used for the selfRAG_long task to determine whether generation needs to continue,yes: yes no: no",
+                "ico": "el-icon-time",
+                "id": "SelfRAGLongRouter",
+                "initParams": [
+                    {
+                        "name": "max_loop_count",
+                        "type": "int\n(selectable)\nControls the maximum number of cycles of the flow chart,\nYou can use temp_loop_count and max_loop_count in routes to determine whether the flow chart has reached the maximum number of cycles",
+                        "value": 0
+                    },
+                    {
+                        "name": "routes",
+                        "type": "str\n(unchanged)\nroutes array",
+                        "value": "[{\"condition\": \"{{'content' in checkData and '</s>' not in checkData['content'] }}\",\"output\": \"{{ {'question': checkData['content']} }}\",\"output_name\": \"yes\",\"output_type\": List[Dict[str, Any]],},{\"condition\": \"{{'content' in checkData and '</s>' in checkData['content'] }}\",\"output\": \"{{ [checkData] }}\",\"output_name\": \"no\",\"output_type\": List[Dict[str, Any]]}]"
+                    }
+                ],
+                "inputParams": [
+                    {
+                        "name": "checkData",
+                        "type": "Any",
+                        "value": ""
+                    }
+                ],
+                "name": "SelfRAGLongRouter",
+                "outputParams": [
+                    {
+                        "name": "yes",
+                        "type": "str",
+                        "value": ""
+                    },
+                    {
+                        "name": "no",
+                        "type": "str",
+                        "value": ""
+                    }
+                ],
+                "type": "SelfRAGLongRouter"
+            }
+        ],
+        "dirPath": "llm_router",
+        "ico": "el-icon-video-pause",
+        "id": "root_Router",
+        "name": "Router",
+        "open": true,
+        "type": "Router"
+    },
+    {
+        "children": [
+            {
+                "codeFilePath": "kninjllm/llm_evaluation/evaluator.py",
+                "description": "Used to evaluate end-to-end tasks",
+                "ico": "el-icon-time",
+                "id": "Evaluator",
+                "initParams": [],
+                "inputParams": [
+                    {
+                        "name": "dataset_info",
+                        "type": "Dict[str,Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "result",
+                        "type": "Dict[str,Any]",
+                        "value": ""
+                    }
+                ],
+                "name": "Evaluator",
+                "outputParams": [
+                    {
+                        "name": "final_result",
+                        "type": "Dict[str,Any]",
+                        "value": ""
+                    }
+                ],
+                "type": "Evaluator"
+            }
+        ],
+        "dirPath": "llm_evaluation",
+        "ico": "el-icon-video-pause",
+        "id": "root_Evaluation",
+        "name": "Evaluation",
+        "open": true,
+        "type": "Evaluation"
+    },
+    {
+        "children": [
+            {
+                "codeFilePath": "kninjllm/llm_controller/control_self_rag_short_demo.py",
+                "components": [
+                    "ContrieverRetriever",
+                    "RagGenerator"
+                ],
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "ShortRagController",
+                "initParams": [],
+                "inputParams": [
+                    {
+                        "name": "query_obj",
+                        "type": "Dict[str,Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "knowledge_info",
+                        "type": "Dict[str,Any]",
+                        "value": ""
+                    }
+                ],
+                "name": "ShortRagController",
+                "outputParams": [
+                    {
+                        "name": "final_result",
+                        "type": "List[Dict[str,Any]]",
+                        "value": ""
+                    }
+                ],
+                "type": "ShortRagController"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_controller/control_self_rag_long_demo.py",
+                "components": [
+                    "ContrieverRetriever",
+                    "RagGenerator"
+                ],
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "LongRagController",
+                "initParams": [],
+                "inputParams": [
+                    {
+                        "name": "query_obj",
+                        "type": "Dict[str,Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "knowledge_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "name": "LongRagController",
+                "outputParams": [
+                    {
+                        "name": "final_result",
+                        "type": "List[Dict[str,Any]]",
+                        "value": ""
+                    }
+                ],
+                "type": "LongRagController"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_controller/control_cok.py",
+                "components": [
+                    "KnowledgeSelector",
+                    "OpenAIGenerator",
+                    "SparqlGenerator",
+                    "NaturalGenerator"
+                ],
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "CokController",
+                "initParams": [],
+                "inputParams": [
+                    {
+                        "name": "query_obj",
+                        "type": "Dict[str,Any]",
+                        "value": ""
+                    },
+                    {
+                        "name": "knowledge_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "name": "CokController",
+                "outputParams": [
+                    {
+                        "name": "final_result",
+                        "type": "List[Dict[str,Any]]",
+                        "value": ""
+                    }
+                ],
+                "type": "CokController"
+            }
+        ],
+        "dirPath": "llm_controller",
+        "ico": "el-icon-video-pause",
+        "id": "root_Controller",
+        "name": "Controller",
+        "open": true,
+        "type": "Controller"
+    },
+    {
+        "children": [
+            {
+                "codeFilePath": "kninjllm/llm_dataloader/dataSetLoader.py",
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "DataSet_PopQA_test",
+                "initParams": [
+                    {
+                        "name": "dataset_path",
+                        "type": "str\n(unchanged)\ndataset paths",
+                        "value": "dir_dataset/ODQA_test/popqa_longtail_w_gs.jsonl"
+                    }
+                ],
+                "inputParams": [],
+                "name": "ODQA_Popqa_Test",
+                "outputParams": [
+                    {
+                        "name": "dataset_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "type": "DataSet_PopQA_test"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_dataloader/dataSetLoader.py",
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "DataSet_TriviaQA_test",
+                "initParams": [
+                    {
+                        "name": "dataset_path",
+                        "type": "str\n(unchanged)\ndataset paths",
+                        "value": "dir_dataset/ODQA_test/triviaqa_test_w_gs.jsonl"
+                    }
+                ],
+                "inputParams": [],
+                "name": "ODQA_Triviaqa_Test",
+                "outputParams": [
+                    {
+                        "name": "dataset_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "type": "DataSet_TriviaQA_test"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_dataloader/dataSetLoader.py",
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "DataSet_Nq_test",
+                "initParams": [
+                    {
+                        "name": "dataset_path",
+                        "type": "str\n(unchanged)\ndataset paths",
+                        "value": "dir_dataset/ODQA_test/nq_test.jsonl"
+                    }
+                ],
+                "inputParams": [],
+                "name": "ODQA_NQ_Test",
+                "outputParams": [
+                    {
+                        "name": "dataset_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "type": "DataSet_Nq_test"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_dataloader/dataSetLoader.py",
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "DataSet_hotpotqa_test",
+                "initParams": [
+                    {
+                        "name": "dataset_path",
+                        "type": "str\n(unchanged)\ndataset paths",
+                        "value": "dir_dataset/ODQA_test/hotpotqa_dev.jsonl"
+                    }
+                ],
+                "inputParams": [],
+                "name": "ODQA_Hotpotqa_Test",
+                "outputParams": [
+                    {
+                        "name": "dataset_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "type": "DataSet_hotpotqa_test"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_dataloader/dataSetLoader.py",
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "DataSet_webqa_test",
+                "initParams": [
+                    {
+                        "name": "dataset_path",
+                        "type": "str\n(unchanged)\ndataset paths",
+                        "value": "dir_dataset/ODQA_test/web_questions_test.jsonl"
+                    }
+                ],
+                "inputParams": [],
+                "name": "ODQA_Webqa_Test",
+                "outputParams": [
+                    {
+                        "name": "dataset_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "type": "DataSet_webqa_test"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_dataloader/dataSetLoader.py",
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "DataSet_2wiki_test",
+                "initParams": [
+                    {
+                        "name": "dataset_path",
+                        "type": "str\n(unchanged)\ndataset paths",
+                        "value": "dir_dataset/ODQA_test/2wiki_dev.jsonl"
+                    }
+                ],
+                "inputParams": [],
+                "name": "ODQA_2Wikiqa_Test",
+                "outputParams": [
+                    {
+                        "name": "dataset_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "type": "DataSet_2wiki_test"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_dataloader/dataSetLoader.py",
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "DataSet_retriever_arguana_test",
+                "initParams": [
+                    {
+                        "name": "dataset_path",
+                        "type": "str\n(unchanged)\ndataset paths",
+                        "value": "dir_dataset/retriever/test_data/ArguAna"
+                    }
+                ],
+                "inputParams": [],
+                "name": "Retriever_ArguAna_Test",
+                "outputParams": [
+                    {
+                        "name": "dataset_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "type": "DataSet_retriever_arguana_test"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_dataloader/dataSetLoader.py",
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "DataSet_retriever_fiqa_test",
+                "initParams": [
+                    {
+                        "name": "dataset_path",
+                        "type": "str\n(unchanged)\ndataset paths",
+                        "value": "dir_dataset/retriever/test_data/FiQA2018"
+                    }
+                ],
+                "inputParams": [],
+                "name": "Retriever_FIQA2018_Test",
+                "outputParams": [
+                    {
+                        "name": "dataset_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "type": "DataSet_retriever_fiqa_test"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_dataloader/dataSetLoader.py",
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "DataSet_retriever_hotpotqa_test",
+                "initParams": [
+                    {
+                        "name": "dataset_path",
+                        "type": "str\n(unchanged)\ndataset paths",
+                        "value": "dir_dataset/retriever/test_data/HotpotQA"
+                    }
+                ],
+                "inputParams": [],
+                "name": "Retriever_HotpotQA_Test",
+                "outputParams": [
+                    {
+                        "name": "dataset_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "type": "DataSet_retriever_hotpotqa_test"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_dataloader/dataSetLoader.py",
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "DataSet_retriever_msmarco_test",
+                "initParams": [
+                    {
+                        "name": "dataset_path",
+                        "type": "str\n(unchanged)\ndataset paths",
+                        "value": "dir_dataset/retriever/test_data/MSMARCO"
+                    }
+                ],
+                "inputParams": [],
+                "name": "Retriever_MSMARCO_Test",
+                "outputParams": [
+                    {
+                        "name": "dataset_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "type": "DataSet_retriever_msmarco_test"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_dataloader/dataSetLoader.py",
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "DataSet_retriever_nfcorpus_test",
+                "initParams": [
+                    {
+                        "name": "dataset_path",
+                        "type": "str\n(unchanged)\ndataset paths",
+                        "value": "dir_dataset/retriever/test_data/NFCorpus"
+                    }
+                ],
+                "inputParams": [],
+                "name": "Retriever_NFCorpus_Test",
+                "outputParams": [
+                    {
+                        "name": "dataset_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "type": "DataSet_retriever_nfcorpus_test"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_dataloader/dataSetLoader.py",
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "DataSet_retriever_nq_test",
+                "initParams": [
+                    {
+                        "name": "dataset_path",
+                        "type": "str\n(unchanged)\ndataset paths",
+                        "value": "dir_dataset/retriever/test_data/NQ"
+                    }
+                ],
+                "inputParams": [],
+                "name": "Retriever_NQ_Test",
+                "outputParams": [
+                    {
+                        "name": "dataset_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "type": "DataSet_retriever_nq_test"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_dataloader/dataSetLoader.py",
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "DataSet_retriever_quora_test",
+                "initParams": [
+                    {
+                        "name": "dataset_path",
+                        "type": "str\n(unchanged)\ndataset paths",
+                        "value": "dir_dataset/retriever/test_data/QuoraRetrieval"
+                    }
+                ],
+                "inputParams": [],
+                "name": "Retriever_Quora_Test",
+                "outputParams": [
+                    {
+                        "name": "dataset_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "type": "DataSet_retriever_quora_test"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_dataloader/dataSetLoader.py",
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "DataSet_retriever_scifact_test",
+                "initParams": [
+                    {
+                        "name": "dataset_path",
+                        "type": "str\n(unchanged)\ndataset paths",
+                        "value": "dir_dataset/retriever/test_data/SciFact"
+                    }
+                ],
+                "inputParams": [],
+                "name": "Retriever_SciFact_Test",
+                "outputParams": [
+                    {
+                        "name": "dataset_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "type": "DataSet_retriever_scifact_test"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_dataloader/dataSetLoader.py",
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "DataSet_train_Retriever",
+                "initParams": [
+                    {
+                        "name": "dataset_path",
+                        "type": "str\n(unchanged)\ndataset paths",
+                        "value": "dir_dataset/retriever/train_data"
+                    }
+                ],
+                "inputParams": [],
+                "name": "Retriever_Train",
+                "outputParams": [
+                    {
+                        "name": "dataset_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "type": "DataSet_train_Retriever"
+            },
+            {
+                "codeFilePath": "kninjllm/llm_dataloader/dataSetLoader.py",
+                "description": "",
+                "ico": "el-icon-time",
+                "id": "DataSet_train_selfrag",
+                "initParams": [
+                    {
+                        "name": "dataset_path",
+                        "type": "str\n(unchanged)\ndataset paths",
+                        "value": "dir_dataset/generator/self_rag/train_data/train.jsonl"
+                    }
+                ],
+                "inputParams": [],
+                "name": "Generator_SelfRAG_Train",
+                "outputParams": [
+                    {
+                        "name": "dataset_info",
+                        "type": "Dict[str, Any]",
+                        "value": ""
+                    }
+                ],
+                "type": "DataSet_train_selfrag"
+            }
+        ],
+        "dirPath": "llm_dataloader",
+        "ico": "el-icon-video-pause",
+        "id": "root_DataSet",
+        "name": "DataSet",
+        "open": true,
+        "type": "DataSet"
+    }
+]

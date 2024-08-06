@@ -1,0 +1,189 @@
+.pop-up-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    overflow-y: auto;
+    box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.4);
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s;
+    z-index: 10;
+    background-color: #ffffff;
+    width: 100%;
+    height: 100%;
+}
+@media (min-width: 768px) {
+    .pop-up-modal {
+        width: calc(100% - 40px);
+        height: auto;
+        max-width: 900px;
+    }
+}
+.pop-up-modal .content-modal {
+    width: 100%;
+    max-width: 900px;
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+    min-height: 100vh;
+}
+@media (min-width: 768px) {
+    .pop-up-modal .content-modal {
+        min-height: inherit;
+    }
+}
+.pop-up-modal .content-modal .container-modal {
+    padding: 100px 20px 140px;
+}
+@media (min-width: 568px) {
+    .pop-up-modal .content-modal .container-modal {
+        padding: 50px 20px 80px;
+    }
+}
+@media (min-width: 768px) {
+    .pop-up-modal .content-modal .container-modal {
+        padding: 70px 0px 90px;
+        max-width: 520px;
+        margin: 0 auto;
+    }
+}
+.pop-up-modal .content-modal .close-modal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 11111;
+    font-size: 1.1rem;
+    font-weight: bold;
+    letter-spacing: 0.05rem;
+    color: #3e4146;
+    transition: all 0.4s;
+}
+.pop-up-modal .content-modal .close-modal:hover {
+    cursor: pointer;
+    color: #f66867;
+}
+.pop-up-modal .content-modal .dots-modal .dot-modal {
+    position: absolute;
+    border-radius: 100%;
+    z-index: 11;
+}
+.pop-up-modal .content-modal .dots-modal .dot-modal:nth-of-type(1) {
+    top: -80px;
+    right: -80px;
+    width: 160px;
+    height: 160px;
+    background-color: #689bf6;
+    animation: float-modal 6s ease-in-out infinite;
+}
+@media (min-width: 768px) {
+    .pop-up-modal .content-modal .dots-modal .dot-modal:nth-of-type(1) {
+        top: -190px;
+        right: -190px;
+        width: 380px;
+        height: 380px;
+    }
+}
+.pop-up-modal .content-modal .dots-modal .dot-modal:nth-of-type(2) {
+    bottom: -120px;
+    left: -120px;
+    width: 240px;
+    height: 240px;
+    background-color: #f66867;
+    animation: float-modal 8s ease-in-out infinite;
+}
+.pop-up-modal .content-modal .dots-modal .dot-modal:nth-of-type(3) {
+    bottom: -50px;
+    right: -50px;
+    width: 100px;
+    height: 100px;
+    background-color: #ffd84c;
+    animation: float-modal 4s ease-in-out infinite;
+}
+.pop-up-modal .content-modal .title-modal h1 {
+    text-align: center;
+    color: #f66867;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 2.8rem;
+    letter-spacing: 0.05rem;
+}
+.pop-up-modal .content-modal img {
+    width: 100%;
+    max-width: 220px;
+    display: inline-block;
+    margin: 30px 0 40px 0;
+    opacity: 0;
+    transform: translateX(60px);
+    transition: 0.2s;
+}
+@media (min-width: 768px) {
+    .pop-up-modal .content-modal img {
+        max-width: 300px;
+    }
+}
+.pop-up-modal .content-modal .subscribe-modal h1 {
+    font-size: 1.5rem;
+    color: #3e4146;
+    line-height: 130%;
+    letter-spacing: 0.07rem;
+    margin-bottom: 30px;
+}
+.pop-up-modal .content-modal .subscribe-modal h1 span {
+    color: #f66867;
+}
+.pop-up-modal .content-modal .subscribe-modal form {
+    overflow: hidden;
+}
+.pop-up-modal .content-modal .subscribe-modal form input {
+    width: 100%;
+    float: left;
+    padding: 15px 20px;
+    text-align: center;
+    font-family: inherit;
+    font-size: 1.1rem;
+    letter-spacing: 0.05rem;
+    outline: 0;
+}
+.pop-up-modal .content-modal .subscribe-modal form input[type=email] {
+    margin-bottom: 15px;
+    border: 1px solid #bec1c5;
+    transition: all 0.4s;
+}
+@media (min-width: 768px) {
+    .pop-up-modal .content-modal .subscribe-modal form input[type=email] {
+        margin-bottom: 0px;
+        width: 75%;
+        border-right-width: 0px;
+    }
+}
+.pop-up-modal .content-modal .subscribe-modal form input[type=email]:focus {
+    border-color: #3e4146;
+}
+.pop-up-modal .content-modal .subscribe-modal form input[type=button] {
+    background-color: #8e6ac1;
+    color: #ffffff;
+    border: 1px solid #8e6ac1;
+    transition: all 0.4s;
+}
+@media (min-width: 768px) {
+    .pop-up-modal .content-modal .subscribe-modal form input[type=button] {
+        width: 25%;
+    }
+}
+.pop-up-modal .content-modal .subscribe-modal form input[type=button]:hover {
+    cursor: pointer;
+    background-color: #7349af;
+    border-color: #7349af;
+}
+.pop-up-modal.open-modal {
+    visibility: visible;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+.pop-up-modal.open-modal img {
+    opacity: 1;
+    transition: 1s;
+    transition-delay: 0.3s;
+    transform: translateX(0px);
+}

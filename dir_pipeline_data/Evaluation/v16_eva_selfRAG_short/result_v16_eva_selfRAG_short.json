@@ -1,0 +1,1 @@
+{"checkEvaluateRouter": {"yes": {"metric_mean": 0.0, "eva_list": [{"question": "who got the first nobel prize in physics", "golden_answers": ["Wilhelm Conrad Röntgen"], "content": "C", "metric_result": 0}, {"question": "when is the next deadpool movie being released", "golden_answers": ["May 18, 2018"], "content": "May 18 , 2018", "metric_result": 0}]}}}
