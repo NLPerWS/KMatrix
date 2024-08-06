@@ -162,9 +162,17 @@ We can use logic or control flow diagrams to organize component relationships fo
 
 - For K-LLMs system with complex process (including multifarious arithmetic operations and logical judgments), we can use control flow diagram to design system process using Python programming.  Adding components to a  control flow diagram, and programming components logics.
 
-<img src="images/v2_create_ctro.png" alt="image" style="zoom: 50%;" />	
+​	step1: Adding components to a  control flow diagram.
 
-<img src="images/v2_rag_long.png" alt="image" style="zoom: 50%;" />
+<div align=center><img src="images/v2_create_ctro.png" alt="image" style="zoom: 50%;" /></div>
+
+
+
+​	step2: programming components logics using python.
+
+<div align=center><img src="images/v2_rag_long.png" alt="image" style="zoom: 50%;" /></div>
+
+
 
 - For K-LLMs system with concise process (like linear, branching, looping, and conditional structures), we can employ logic flow diagram to directly connect components with edges. By jointly using control and logic flow diagram, KMatrix flexibly supports common K-LLMs patterns using naive, iterative, and adaptive enhancement methods. Draging components into the design area, and connecting them to build K-LLMs system. 
 
