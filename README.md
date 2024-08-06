@@ -1,4 +1,4 @@
-# ⚡KMatrix:  A Flexible Heterogeneous Knowledge Enhancement Toolkit for Large Language Model
+#  :sunflower: KMatrix:  A Flexible Heterogeneous Knowledge Enhancement Toolkit for Large Language Model
 
 
 
@@ -162,13 +162,13 @@ We can use logic or control flow diagrams to organize component relationships fo
 
 - For K-LLMs system with complex process (including multifarious arithmetic operations and logical judgments), we can use control flow diagram to design system process using Python programming.  Adding components to a  control flow diagram, and programming components logics.
 
-​	step1: Adding components to a  control flow diagram.
+​		step1: Adding components to a  control flow diagram.
 
 <div align=center><img src="images/v2_create_ctro.png" alt="image" style="zoom: 50%;" /></div>
 
 
 
-​	step2: programming components logics using python.
+​		step2: programming components logics using python.
 
 <div align=center><img src="images/v2_rag_long.png" alt="image" style="zoom: 50%;" /></div>
 
