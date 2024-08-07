@@ -87,7 +87,7 @@ To get started with KMatrix, simply clone it from Github and install (requires P
     
     3. Construct and Execute Flow diagram
     You can construct K-LLMs systems using our modular component and control-logic flow diagram, and execute it. Details of K-LLMs systems construction can be found in toolkit usage. You can use a flow diagram we have built (a K-LLMs system actively querying multiple knowledge interfaces) for a quick start:
-    Click the [Use exising diagram] drop-down box, select Deployment/v16_cok_de_diagram, and then click the [Deploy diagram] button to start the deployment. After the deployment completes, enter your question in the question box and click [send] to generate reasoning steps and answer.
+    Click the [Use exising diagram] drop-down box on the frontend of toolkit, select Deployment/v16_cok_de_diagram, and then click the [Deploy diagram] button to start the deployment. After the deployment completes, enter your question in the question box and click [send] to generate reasoning steps and answer.
 
 
 
@@ -97,7 +97,7 @@ To get started with KMatrix, simply clone it from Github and install (requires P
 
 We provide a  screencast video of our toolkit at [here](https://youtu.be/VL-zY2pphwI) which explained the tool usage instructions.
 
-### K-LLMs System Construction
+### 1 K-LLMs System Construction
 
 KMatrix constructs K-LLMs system using two stages：
 
@@ -105,7 +105,7 @@ KMatrix constructs K-LLMs system using two stages：
 
 - Constructing components logic relations using control-logic flow diagram 
 
-#### 1. Selecting  components and  configuring  parameters
+#### 1.1 Selecting  components and  configuring  parameters
 
 KMatrix component is an functional unit of K-LLMs system. We unify datasets, knowledge, and models involved in K-LLMs as components. KMatrix defines 16 types of components, like Retriever, Query Parser, Generator, etc. 
 
@@ -156,11 +156,11 @@ KMatrix component is an functional unit of K-LLMs system. We unify datasets, kno
 
 Users can select these predefined components or define their own components according to predefined formats. And configure component  parameters in KMatrix graphical interface. 
 
-#### 2. Constructing components logic relations using control-logic flow diagram
+#### 1.2 Constructing components logic relations using control-logic flow diagram
 
 We can use logic or control flow diagrams to organize component relationships for K-LLMs system construction. 
 
-- For K-LLMs system with complex process (including multifarious arithmetic operations and logical judgments), we can use control flow diagram to design system process using Python programming.  Adding components to a  control flow diagram, and programming components logics.
+- **Deploy Control Flow Diagram:** for K-LLMs system with complex process (including multifarious arithmetic operations and logical judgments), we can use control flow diagram to design system process using Python programming.  Adding components to a  control flow diagram, and programming components logics.
 
 ​		step1: Adding components to a  control flow diagram.
 
@@ -174,45 +174,41 @@ We can use logic or control flow diagrams to organize component relationships fo
 
 
 
-- For K-LLMs system with concise process (like linear, branching, looping, and conditional structures), we can employ logic flow diagram to directly connect components with edges. By jointly using control and logic flow diagram, KMatrix flexibly supports common K-LLMs patterns using naive, iterative, and adaptive enhancement methods. Draging components into the design area, and connecting them to build K-LLMs system. 
+- **Deploy Logic Flow Diagram:** for K-LLMs system with concise process (like linear, branching, looping, and conditional structures), we can employ logic flow diagram to directly connect components with edges. By jointly using control and logic flow diagram, KMatrix flexibly supports common K-LLMs patterns using naive, iterative, and adaptive enhancement methods. Draging components into the design area, and connecting them to build K-LLMs system. 
 
 <img src="images/v2_inter.png" alt="image" style="zoom:50%;" />
 
 
 
-The flow diagram design approachs for training, evaluation, and deployment of K-LLMs system are as follows:
-
-For component training and evaluation, users can simply connect the Dataset component with the component to be trained/evaluated. For end-to-end evaluation of the K-LLMs system, users can employ the Evaluator component to connect Dataset component with K-LLMs system, and the Evaluator component will manage evaluation process. For K-LLMs system deployment, users can map the task inputs to the Multiplexer, and connect the task outputs to the OutputBuilder on the basis of original system flow diagram. After constructing system flow diagram, you can run it. 
-
-
+- **Flow diagram design approachs for training, evaluation, and deployment of K-LLMs system**: for component training and evaluation, users can simply connect the Dataset component with the component to be trained/evaluated. For end-to-end evaluation of the K-LLMs system, users can employ the Evaluator component to connect Dataset component with K-LLMs system, and the Evaluator component will manage evaluation process. For K-LLMs system deployment, users can map the task inputs to the Multiplexer, and connect the task outputs to the OutputBuilder on the basis of original system flow diagram. After constructing system flow diagram, Users can excute it. 
 
 ![image](images/toolkit_usage.png)
 
 
 
-And we have integrated some pre-built K-LLMs systems flow diagram instances for user use.
+- **Integrated pre-built K-LLMs systems flow diagram instances:** we have integrated some pre-built K-LLMs systems flow diagram instances for user use, which contain four categories: Knowledge Integration, Training, Evaluation, Deployment for heterogeneous knowledge integration, K-LLMs system training, evaluation, deployment respectively. Users can click the [Use exising diagram] drop-down box on the frontend of toolkit, and use the corresponding flow diagram according to the Name.
 
-| FlowDiagram Example Location                | Applications of FlowDiagram | FlowDiagram Function Description                             |
-| :------------------------------------------ | :-------------------------- | :----------------------------------------------------------- |
-| Knowledge Integration/v16_save_upload_to_ES | Knowledge Integration       | Converting various types of local heterogeneous knowledge (such as text, tables and knowledge graphs) into unified text fragments for local knowledge integration. |
-| Knowledge Integration/v16_UnifiedQuery      | Knowledge Integration       | Incorporating different types of knowledge query interfaces (like Wikipedia, Wikidata) for online knowledge integration. |
-| Training/v16_train_selfrag                  | Training                    | SelfRag Generator component training.                        |
-| Training/v16_train_contriever               | Training                    | Contriever Retriever component training.                     |
-| Training/v16_train_BGE                      | Training                    | BGE Retriever component training.                            |
-| Evaluation/v16_eva_contriever               | Evaluation                  | Contriever Retriever component evaluation.                   |
-| Evaluation/v16_eva_BGE                      | Evaluation                  | BGE Retriever component evaluation.                          |
-| Evaluation/v16_eva_Iterative                | Evaluation                  | Evaluation of a Iterative K-LLMs system using local heterogeneous knowledge . |
-| Evaluation/v16_eva_selfRAG_short            | Evaluation                  | Evaluation of an adaptive K-LLMs system using local heterogeneous knowledge. |
-| Deployment/v16_infer_naive_rag              | Deployment                  | Deployment of a naive K-LLMs system using local heterogeneous knowledge. |
-| Deployment/v16_cok_de_diagram               | Deployment                  | Deployment of an adaptive K-LLMs system using multiple knowledge query interfaces. |
-| Deployment/v16_infer_selfRAG_short          | Deployment                  | Deployment of an adaptive K-LLMs system using heterogeneous knowledge. |
-| Deployment/v16_infer_iterative              | Deployment                  | Deployment of a Iterative K-LLMs system using heterogeneous knowledge. |
+| Name                                        | Category              | Function Description                                         |
+| :------------------------------------------ | :-------------------- | :----------------------------------------------------------- |
+| Knowledge Integration/v16_save_upload_to_ES | Knowledge Integration | Converting various types of local heterogeneous knowledge (such as text, tables and knowledge graphs) into unified text fragments for local knowledge integration. |
+| Knowledge Integration/v16_UnifiedQuery      | Knowledge Integration | Incorporating different types of knowledge query interfaces (like Wikipedia, Wikidata) for online knowledge integration. |
+| Training/v16_train_selfrag                  | Training              | SelfRag Generator component training.                        |
+| Training/v16_train_contriever               | Training              | Contriever Retriever component training.                     |
+| Training/v16_train_BGE                      | Training              | BGE Retriever component training.                            |
+| Evaluation/v16_eva_contriever               | Evaluation            | Contriever Retriever component evaluation.                   |
+| Evaluation/v16_eva_BGE                      | Evaluation            | BGE Retriever component evaluation.                          |
+| Evaluation/v16_eva_Iterative                | Evaluation            | Evaluation of a Iterative K-LLMs system using local heterogeneous knowledge . |
+| Evaluation/v16_eva_selfRAG_short            | Evaluation            | Evaluation of an adaptive K-LLMs system using local heterogeneous knowledge. |
+| Deployment/v16_infer_naive_rag              | Deployment            | Deployment of a naive K-LLMs system using local heterogeneous knowledge. |
+| Deployment/v16_cok_de_diagram               | Deployment            | Deployment of an adaptive K-LLMs system using multiple knowledge query interfaces. |
+| Deployment/v16_infer_selfRAG_short          | Deployment            | Deployment of an adaptive K-LLMs system using heterogeneous knowledge. |
+| Deployment/v16_infer_iterative              | Deployment            | Deployment of a Iterative K-LLMs system using heterogeneous knowledge. |
 
 
 
-### K-LLMs System Execution
+### 2 K-LLMs System Execution
 
-After constructing system flow diagram, we can execute it. 
+After constructing system flow diagram, Users can execute it. 
 
 1. K-LLMs system training and evaluation flow diagram execution:  Click [Execute diagram] button to execute it, and click [Check execution results] to view the training or evaluation result logs.
 2. K-LLMs system deployment flow diagram execution: Click the [Deploy diagram] button to deploy it.  After completing deployment, enter your question in the question box and click [send] to generate reasoning steps and answer. The K-LLMs system deployment interface with multiple knowledge bases and multiple queries is shown in the following figure.
