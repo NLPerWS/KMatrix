@@ -1101,7 +1101,7 @@
         ],
         "dirPath": "llm_adaptiver",
         "ico": "el-icon-video-pause",
-        "id": "root_Generator",
+        "id": "root_adaptiver",
         "name": "Adaptive Interactor",
         "open": true,
         "type": "Adaptiver"
