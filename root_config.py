@@ -9,7 +9,7 @@ class RootConfig:
     
     # ---------------------------------- The following configurations need to be modified -----------------------------------
     # Absolute path of the project
-    root_path = "/xxx/KMatrix/"
+    root_path = "/app/KMatrix/"
     if not root_path.endswith("/"):
         root_path = root_path + "/"
     
