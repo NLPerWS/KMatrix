@@ -21,39 +21,7 @@ from kninjllm.llm_utils.common_utils import set_proxy,unset_proxy
 
 @component
 class OpenAIGenerator:
-    """
-    Enables text generation using OpenAI's large language models (LLMs). It supports gpt-4 and gpt-3.5-turbo
-    family of models.
 
-    Users can pass any text generation parameters valid for the `openai.ChatCompletion.create` method
-    directly to this component via the `**generation_kwargs` parameter in __init__ or the `**generation_kwargs`
-    parameter in `run` method.
-
-    For more details on the parameters supported by the OpenAI API, refer to the OpenAI
-    [documentation](https://platform.openai.com/docs/api-reference/chat).
-
-    Key Features and Compatibility:
-     - Primary Compatibility: Designed to work seamlessly with gpt-4, gpt-3.5-turbo family of models.
-     - Streaming Support: Supports streaming responses from the OpenAI API.
-     - Customizability: Supports all parameters supported by the OpenAI API.
-
-     Input and Output Format:
-      - String Format: This component uses the strings for both input and output.
-
-    ```python
-    from kninjllm.llm_generator.openai_generator import OpenAIGenerator
-    client = OpenAIGenerator()
-    response = client.run("What's Natural Language Processing? Be brief.")
-    print(response)
-
-    >> {'result': ['Natural Language Processing (NLP) is a branch of artificial intelligence that focuses on
-    >> the interaction between computers and human language. It involves enabling computers to understand, interpret,
-    >> and respond to natural human language in a way that is both meaningful and useful.'], 'meta': [{'model':
-    >> 'gpt-3.5-turbo-0613', 'index': 0, 'finish_reason': 'stop', 'usage': {'prompt_tokens': 16,
-    >> 'completion_tokens': 49, 'total_tokens': 65}}]}
-    ```
-    """
-    
     def __init__(
         self,
         api_key: str = "",
@@ -61,7 +29,7 @@ class OpenAIGenerator:
         executeType : str = "",
         tempModelCatch: list = [],
         do_log: bool = True,
-        model: str = "gpt-3.5-turbo-0125",
+        model: str = RootConfig.openai_model_version,
         streaming_callback: Optional[Callable[[StreamingChunk], None]] = None,
         api_base_url: Optional[str] = None,
         organization: Optional[str] = None,

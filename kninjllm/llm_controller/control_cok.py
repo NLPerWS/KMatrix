@@ -14,7 +14,7 @@ from kninjllm.llm_utils.common_utils import unset_proxy,loadModelByCatch
 import kninjllm.llm_knowledgeUploader.utils.globalvar
 kninjllm.llm_knowledgeUploader.utils.globalvar.init()
 
-generator = OpenAIGenerator(api_key=RootConfig.openai_api_key,model="gpt-3.5-turbo-0613",generation_kwargs={"max_tokens":1024,"temperature":0,"n":1},do_log=False)
+generator = OpenAIGenerator(api_key=RootConfig.openai_api_key,model=RootConfig.openai_model_version,generation_kwargs={"max_tokens":1024,"temperature":0,"n":1},do_log=False)
 selector = KnowledgeSelector()
 
 @component

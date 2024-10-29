@@ -1,5 +1,5 @@
 from openai import OpenAI
-
+from root_config import RootConfig
 
 class DemonstrationSelection:
     
@@ -29,7 +29,7 @@ class DemonstrationSelection:
 
 		prompt_question_input=domain_selection_demonstration+"Q: "+input_query+"\nRelevant domains: "
 
-		s1_domains=self.call_openai_api("gpt-3.5-turbo-0613", prompt_question_input, max_tokens=1024, temperature=0, n=1)
+		s1_domains=self.call_openai_api(RootConfig.openai_model_version, prompt_question_input, max_tokens=1024, temperature=0, n=1)
 		s1_domains=[x.message.content.strip() for x in s1_domains[0].choices][0]
 		s1_domains=s1_domains.strip().split(", ")
 

@@ -19,7 +19,7 @@ class Natural_language_generator:
         """
 
 
-    def nl_parser(self,input_content,model_name="gpt-3.5-turbo-0613"):
+    def nl_parser(self,input_content,model_name=RootConfig.openai_model_version):
 
         prompt_question_input=self.np_parsing_demonstration+"\nDeclarative Statement: "+input_content+"\nQuestion: "
         set_proxy()

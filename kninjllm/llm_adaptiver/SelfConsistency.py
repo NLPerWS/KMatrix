@@ -1,12 +1,13 @@
 
 from openai import OpenAI
+from root_config import RootConfig
 
 class SelfConsistency:
     
 	def __init__():
 		pass
     
-	def self_consisitency_timing_judge(self,input_query,model_name="gpt-3.5-turbo-0613",api_key=None,max_tokens=256, temperature=0.7, n=10, threshold=0.7):
+	def self_consisitency_timing_judge(self,input_query,model_name=RootConfig.openai_model_version,api_key=None,max_tokens=256, temperature=0.7, n=10, threshold=0.7):
 			
 		cot_sc_responses = self.call_openai_api(model_name, input_query, max_tokens=max_tokens, temperature=temperature, n=n)
 

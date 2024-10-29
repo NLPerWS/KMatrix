@@ -23,7 +23,7 @@ class Parser:
         query=query+"\n\nsentence1: "+rationale+"\nsentence2: "+rationale_knowledge+"\nreply: "
         
     
-        # cot_sc_responses = call_openai_api("gpt-3.5-turbo-0613",query, max_tokens=1024, temperature=0, n=1)
+        # cot_sc_responses = call_openai_api(RootConfig.openai_model_version,query, max_tokens=1024, temperature=0, n=1)
         cot_sc_responses = generator.run(query_obj={"question":query})['final_result']['content']
         
         

@@ -17,7 +17,11 @@ KMatrix is a flexible heterogeneous knowledge enhancemant toolkit for LLMs.  Our
 
 
 
-## :wrench: Installation 
+## :wrench: Quick Start
+
+### 1. Quick Start from Manual
+
+**Installation** 
 
 To get started with KMatrix, simply clone it from Github and install (requires Python 3.7+ ,  Python 3.10 recommended): 
 
@@ -68,10 +72,7 @@ To get started with KMatrix, simply clone it from Github and install (requires P
     
     # You need to import knowledge into ES database for Retrieval, our knowledge samples locate in dir_knowledge/local_knowledge_verlized/, you need to create three indexes in ES named 'wikipedia','wikidata','wikitable', and their corresponding files are respectively Wikipedia/wikipedia.jsonl, wikidata/wiki_data.jsonl, wikitable/wikitable.jsonl. After that, you can use retrieval model to retrieve the knowledge in the database.
 
-
-
-
-## :rocket: Quick Start
+**StartUp**
 
 
     If you have successfully installed the environment, a quick start will be easy.
@@ -89,7 +90,30 @@ To get started with KMatrix, simply clone it from Github and install (requires P
     You can construct K-LLMs systems using our modular component and control-logic flow diagram, and execute it. Details of K-LLMs systems construction can be found in toolkit usage. You can use a flow diagram we have built (a K-LLMs system actively querying multiple knowledge interfaces) for a quick start:
     Click the [Use exising diagram] drop-down box on the frontend of toolkit, select Deployment/v16_cok_de_diagram, and then click the [Deploy diagram] button to start the deployment. After the deployment completes, enter your question in the question box and click [send] to generate reasoning steps and answer.
 
+### 2. Quick Start from Docker (recommended)
 
+`````
+$ git clone https://github.com/NLPerWS/KMatrix.git
+$ chmod +x -R KMatrix
+Set configurations that needs to be modified in the root_config.py file located in the project root directory, if necessary. Set the SERVER_HOST in easy-flow/src/assets/js/host.js to the IP address of deployment server.
+
+# Install ES database using Docker
+$ docker pull elasticsearch:8.11.1
+$ docker run -idt  \
+    -p 9200:9200 -p 9300:9300 \
+    -e "discovery.type=single-node" \
+    -e "ES_JAVA_OPTS=-Xms512m -Xmx512m" \
+    -e "xpack.security.enabled=true" \
+    -e "xpack.security.enrollment.enabled=true" \
+    -e "ELASTIC_PASSWORD=yourpassword" \
+    -v $(pwd)/elasticsearch_data:/usr/share/elasticsearch/data \
+    -v $(pwd)/esplugins:/usr/share/elasticsearch/plugins \
+    --name elasticsearch elasticsearch:8.11.1
+
+$ docker pull leap233/kmatrix:v1
+$ cd KMatrix
+$ sh docker_start.sh
+`````
 
 
 
