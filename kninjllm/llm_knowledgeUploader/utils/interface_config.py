@@ -10,7 +10,6 @@ domain_mapping = {
         "scienceqa_bio": InterfaceExecute(domain='biology/scienceqa_bio',type='local',url='dir_knowledge/online_interface/biology_only_output.jsonl')
     },
     "medical": {
-        "uptodate": InterfaceExecute(domain='medical/uptodate',type='google',url='@uptodate'),
         "flashcard": InterfaceExecute(domain='medical/flashcard',type='local',url='dir_knowledge/online_interface/medical_only_output.jsonl')
     },
     "physical": {

@@ -22,7 +22,6 @@ class InterfaceExecute:
 
         # factual/wikipedia     @wikipedia
         # factual/wikidata      https://query.wikidata.org/sparql
-        # medical/uptodate      @uptodate
         # medical/flashcard     veggiebird/medical-flashcards
         # physical/physicsclassroom     @physicsclassroom
         # physical/scienceqa_phy        veggiebird/physics-scienceqa
@@ -98,7 +97,6 @@ class InterfaceExecute:
                         knowl += "\n"
             return knowl
 
-        # this url is  @ck12 or @uptodate
         print("Generate query...")
         # 注释：查询query生成器
         query = Natural_language_generator().run(query_obj={"question":input})['final_result']
