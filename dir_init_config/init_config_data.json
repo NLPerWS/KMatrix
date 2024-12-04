@@ -20,7 +20,7 @@
                     },
                     {
                         "name": "search_url",
-                        "type": "str\n(required)\nIf interface_type is google,search_url is @xxx,example: @ck12\nIf interface_type is wiki,search_url is sparql endpoint,example: https://query.wikidata.org/sparql\nIf interface_type is local,search_url is server path to jsonl file,example: /xxx/xxx/xx.jsonl",
+                        "type": "str\n(required)\nIf interface_type is google,search_url is @xxx,example: @xx\nIf interface_type is wiki,search_url is sparql endpoint,example: https://query.wikidata.org/sparql\nIf interface_type is local,search_url is server path to jsonl file,example: /xxx/xxx/xx.jsonl",
                         "value": ""
                     }
                 ],
@@ -553,7 +553,7 @@
                     {
                         "name": "tag",
                         "type": "str\n(unchanged)\n interface tag",
-                        "value": "Wikipedia_Interface \nWikidata_Interface \nPhysics_Interface \nCk12_Interface \nFlashcard_Interface \nScienceqaBio_Interface \nScienceqaPhy_Interface"
+                        "value": "Wikipedia_Interface \nWikidata_Interface \nPhysics_Interface \nFlashcard_Interface \nScienceqaBio_Interface \nScienceqaPhy_Interface"
                     }
                 ],
                 "inputParams": [],

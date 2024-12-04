@@ -243,7 +243,7 @@ After constructing system flow diagram, Users can execute it.
 
 ##  :notebook: Knowledge And Datasets
 
-**Knowledge**:  KMatrix designs two ways of knowledge access: local knowledge and online interface. To support heterogeneous knowledge enhancemant, for local knowledge, we integrate public Wikipedia (text), Wikidata (knowledge graph) and Wikitable (table). For online interface, we integrate two general knowledge interfaces(Wikipedia and Wikidata query APIs) and six domain knowledge interfaces (APIs including CK12, etc). 
+**Knowledge**:  KMatrix designs two ways of knowledge access: local knowledge and online interface. To support heterogeneous knowledge enhancemant, for local knowledge, we integrate public Wikipedia (text), Wikidata (knowledge graph) and Wikitable (table). For online interface, we integrate two general knowledge interfaces(Wikipedia and Wikidata query APIs) and six domain knowledge interfaces (APIs including google, etc). 
 
 | Knowledge Access Way | Knowledge Name   | Knowledge Scale |
 | -------------------- | ---------------- | --------------- |
@@ -254,9 +254,7 @@ After constructing system flow diagram, Users can execute it.
 |                      | Wikidata         | /               |
 |                      | Flashcard        | 33553           |
 |                      | BioScienceqa     | 1062            |
-|                      | CK12             | /               |
 |                      | PhyScienceqa     | 780             |
-|                      | Physicsclassroom | /               |
 
 
 

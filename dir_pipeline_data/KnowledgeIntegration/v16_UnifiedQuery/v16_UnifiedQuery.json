@@ -239,43 +239,7 @@
 			"top": "240px",
 			"type": "Upload_interface"
 		},
-		{
-			"codeFilePath": "kninjllm/llm_knowledgeUploader/Local_interface.py",
-			"components": [],
-			"description": "",
-			"ico": "el-icon-time",
-			"id": "hjph4ol2m",
-			"initParams": [
-				{
-					"name": "interface_domain",
-					"type": "str\n(required)\ninterface type\nformat: \nKnowledge domain/knowledge interface type\nexample: \nfactual/wikipedia",
-					"value": "biology/ck12"
-				},
-				{
-					"name": "interface_type",
-					"type": "str\n(required)\ngoogle\nwiki\nlocal",
-					"value": "google"
-				},
-				{
-					"name": "search_url",
-					"type": "str\n(required)\nIf interface_type is google,search_url is @xxx,example: @flashcard\nIf interface_type is wiki,search_url is sparql endpoint,example: https://query.wikidata.org/sparql\nIf interface_type is local,search_url is server path to jsonl file,example: /xxx/xxx/xx.jsonl",
-					"value": "@ck12"
-				}
-			],
-			"inputParams": [],
-			"left": "28px",
-			"name": "ck12_interface",
-			"outputParams": [
-				{
-					"name": "interface_info",
-					"type": "Dict[str, Any]",
-					"value": ""
-				}
-			],
-			"state": "success",
-			"top": "484px",
-			"type": "Upload_interface"
-		},
+
 		{
 			"codeFilePath": "kninjllm/llm_knowledgeUploader/Local_interface.py",
 			"components": [],
@@ -295,7 +259,7 @@
 				},
 				{
 					"name": "search_url",
-					"type": "str\n(required)\nIf interface_type is google,search_url is @xxx,example: @ck12\nIf interface_type is wiki,search_url is sparql endpoint,example: https://query.wikidata.org/sparql\nIf interface_type is local,search_url is server path to jsonl file,example: /xxx/xxx/xx.jsonl",
+					"type": "str\n(required)\nIf interface_type is google,search_url is @xxx,example: @xx\nIf interface_type is wiki,search_url is sparql endpoint,example: https://query.wikidata.org/sparql\nIf interface_type is local,search_url is server path to jsonl file,example: /xxx/xxx/xx.jsonl",
 					"value": "dir_knowledge/online_interface/medical_only_output.jsonl"
 				}
 			],
@@ -318,43 +282,6 @@
 			"components": [],
 			"description": "",
 			"ico": "el-icon-time",
-			"id": "fj02z13jef",
-			"initParams": [
-				{
-					"name": "interface_domain",
-					"type": "str\n(required)\ninterface type\nformat: \nKnowledge domain/knowledge interface type\nexample: \nfactual/wikipedia",
-					"value": "physical/physicsclassroom"
-				},
-				{
-					"name": "interface_type",
-					"type": "str\n(required)\ngoogle\nwiki\nlocal",
-					"value": "google"
-				},
-				{
-					"name": "search_url",
-					"type": "str\n(required)\nIf interface_type is google,search_url is @xxx,example: @ck12\nIf interface_type is wiki,search_url is sparql endpoint,example: https://query.wikidata.org/sparql\nIf interface_type is local,search_url is server path to jsonl file,example: /xxx/xxx/xx.jsonl",
-					"value": "@physicsclassroom"
-				}
-			],
-			"inputParams": [],
-			"left": "838px",
-			"name": "physicsclassroom_interface",
-			"outputParams": [
-				{
-					"name": "interface_info",
-					"type": "Dict[str, Any]",
-					"value": ""
-				}
-			],
-			"state": "success",
-			"top": "251px",
-			"type": "Upload_interface"
-		},
-		{
-			"codeFilePath": "kninjllm/llm_knowledgeUploader/Local_interface.py",
-			"components": [],
-			"description": "",
-			"ico": "el-icon-time",
 			"id": "ujbfzgxkib",
 			"initParams": [
 				{
@@ -369,7 +296,7 @@
 				},
 				{
 					"name": "search_url",
-					"type": "str\n(required)\nIf interface_type is google,search_url is @xxx,example: @ck12\nIf interface_type is wiki,search_url is sparql endpoint,example: https://query.wikidata.org/sparql\nIf interface_type is local,search_url is server path to jsonl file,example: /xxx/xxx/xx.jsonl",
+					"type": "str\n(required)\nIf interface_type is google,search_url is @xxx,example: @xx\nIf interface_type is wiki,search_url is sparql endpoint,example: https://query.wikidata.org/sparql\nIf interface_type is local,search_url is server path to jsonl file,example: /xxx/xxx/xx.jsonl",
 					"value": "dir_knowledge/online_interface/biology_only_output.jsonl"
 				}
 			],
@@ -406,7 +333,7 @@
 				},
 				{
 					"name": "search_url",
-					"type": "str\n(required)\nIf interface_type is google,search_url is @xxx,example: @ck12\nIf interface_type is wiki,search_url is sparql endpoint,example: https://query.wikidata.org/sparql\nIf interface_type is local,search_url is server path to jsonl file,example: /xxx/xxx/xx.jsonl",
+					"type": "str\n(required)\nIf interface_type is google,search_url is @xxx,example: @xx\nIf interface_type is wiki,search_url is sparql endpoint,example: https://query.wikidata.org/sparql\nIf interface_type is local,search_url is server path to jsonl file,example: /xxx/xxx/xx.jsonl",
 					"value": "dir_knowledge/online_interface/physics_only_output.jsonl"
 				}
 			],

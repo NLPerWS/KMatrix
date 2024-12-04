@@ -23,9 +23,7 @@ class InterfaceExecute:
         # factual/wikipedia     @wikipedia
         # factual/wikidata      https://query.wikidata.org/sparql
         # medical/flashcard     veggiebird/medical-flashcards
-        # physical/physicsclassroom     @physicsclassroom
         # physical/scienceqa_phy        veggiebird/physics-scienceqa
-        # biology/ck12          @ck12
         # biology/scienceqa_bio         veggiebird/biology-scienceqa
 
         if type == "local":
