@@ -1,35 +1,6 @@
 import json
 import importlib
 from root_config import RootConfig
-
-
-# from kninjllm.llm_knowledgeUploader.wikidata import Querier as  WikidataQuerier
-# from kninjllm.llm_knowledgeUploader.wikipedia import Querier as  WikiPediaQuerier
-# from kninjllm.llm_knowledgeUploader.uptodate import Querier as  UptoDataQuerier
-# from kninjllm.llm_knowledgeUploader.ck12 import Querier as  Ck12Querier
-# from kninjllm.llm_knowledgeUploader.scienceqa_phy import Querier as  SciencePhyQuerier
-# from kninjllm.llm_knowledgeUploader.scienceqa_bio import Querier as  ScienceBioQuerier
-# from kninjllm.llm_knowledgeUploader.physicsclassroom import Querier as PhysicsQuerier
-
-# domain_mapping = {
-#     "factual": {
-#         "wikidata": WikidataQuerier,
-#         "wikipedia": WikiPediaQuerier,
-#     },
-#     "medical": {
-#         "uptodate": UptoDataQuerier,
-#     },
-#     "biology": {
-#         "scienceqa_bio": ScienceBioQuerier,
-#         "ck12": Ck12Querier,
-#     },
-#     "physical": {
-#         "scienceqa_phy": SciencePhyQuerier,
-#         "physicsclassroom": PhysicsQuerier,
-#     },
-# }
-
-
 def retrieve_knowledge(domain, input, data_point):
     do_import = importlib.import_module('kninjllm.llm_knowledgeUploader.utils.interface_config')
     importlib.reload(do_import)
