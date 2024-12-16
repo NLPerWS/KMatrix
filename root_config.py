@@ -9,7 +9,8 @@ class RootConfig:
     
     # ---------------------------------- The following configurations need to be modified -----------------------------------
     # Absolute path of the project. If it is started by docker, keep /app/KMatrix
-    root_path = "/app/KMatrix"
+    # root_path = "/app/KMatrix"
+    root_path = os.path.dirname(os.path.abspath(__file__)) 
     if not root_path.endswith("/"):
         root_path = root_path + "/"
     
@@ -18,23 +19,22 @@ class RootConfig:
     
     # ES connection address
     ES_HOST = "http://127.0.0.1:9200"
-    ES_USERNAME = "elastic"
-    ES_PASSWORD = "yourpassword"
+    ES_USERNAME = "username"
+    ES_PASSWORD = "password"
     
     # GPU used in the project
-    CUDA_VISIBLE_DEVICES = "0"
+    CUDA_VISIBLE_DEVICES = "3"
     
     # OPENAI api_key
-    openai_api_key = "sk-xxxxx"
+    openai_api_key = "sk-xxxx"
     openai_model_version = "gpt-4o"
     
     # google_search_key     You can go to https://serpapi.com/ to get it
-    google_search_key = "xxxxx"
-    
+    google_search_key = "xxxx"
     
     # Proxy (used for openai api calls)
-    HTTP_PROXY = "http://xxxx:xxxx"
-    HTTPS_PROXY = "http://xxxx:xxxx"
+    HTTP_PROXY = "http://ip:port"
+    HTTPS_PROXY = "http://ip:port"
     
     # ----------------------------------The following configurations do not need to be modified -----------------------------------
     
