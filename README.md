@@ -357,16 +357,16 @@ Apache 2.0 License.
 
  
 
-## :dove:  Reference
+## :dove:  Citing
+If you use KMatrix in your research, please cite:
 
 `````
-@inproceedings{
-wu2024kmatrix,
-title={{KM}atrix: A Flexible Heterogeneous Knowledge Enhancement Toolkit for Large Language Model},
-author={Shun Wu and Di Wu and Kun Luo and XueYou Zhang and Jun Zhao and Kang Liu},
-booktitle={EMNLP 2024 System Demonstration Track},
-year={2024},
-url={https://openreview.net/forum?id=EQzkbJ2GjM}
+@inproceedings{wu2024kmatrix,
+  title={KMatrix: A Flexible Heterogeneous Knowledge Enhancement Toolkit for Large Language Model},
+  author={Wu, Shun and Wu, Di and Luo, Kun and Zhang, XueYou and Zhao, Jun and Liu, Kang},
+  booktitle={Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing: System Demonstrations},
+  pages={280--290},
+  year={2024}
 }
 `````
 
