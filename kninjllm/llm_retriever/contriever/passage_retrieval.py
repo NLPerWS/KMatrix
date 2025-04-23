@@ -470,7 +470,7 @@ def main_infer(args):
             allids = []
             allembeddings = []
             for i, doc in enumerate(passages):
-                if doc['contriever_embedding'] == None:
+                if "contriever_embedding" not in data or doc['contriever_embedding'] == None:
                     t_allids, t_allembeddings = do_contriever_embedding(passages=[doc])
                     temp_id = doc['id']
                     temp_embeddings = t_allembeddings[0].tolist()

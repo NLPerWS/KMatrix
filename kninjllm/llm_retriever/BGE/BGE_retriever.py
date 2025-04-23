@@ -29,18 +29,20 @@ class BGE_Retriever:
     @component.output_types(final_result=List[List[Dict[str,Any]]])
     def run(
         self,
-        query_obj: Dict[str,Any] = {},
-        knowledge_info : Dict[str,Any] = {},
+        query_obj: Dict[str,Any],
+        knowledge_info : Dict[str,Any],
         test_data_info: Dict[str,Any] = {},
         train_data_info : Dict[str,Any] = {},
         dev_data_info : Dict[str,Any] = {},
     ):
         
         if knowledge_info != {}:
+            print("---------------------knowledge_info------------------------\n",knowledge_info)
             knowledge_path = knowledge_info['knowledge_path']
             knowledge_elasticIndex = knowledge_info['knowledge_elasticIndex']
             knowledge_tag = knowledge_info['knowledge_tag']
             knowledge = loadKnowledgeByCatch(knowledge_path=knowledge_path,elasticIndex=knowledge_elasticIndex,tag=knowledge_tag)
+            
             if len(knowledge) > 0:
                 self.searchDataList = knowledge
             if knowledge_path != "":
@@ -60,10 +62,6 @@ class BGE_Retriever:
             if self.logSaver is not None:
                 self.logSaver.writeStrToLog("Function -> BGE_Retriever -> run | Given the search text, return the search content ")
                 self.logSaver.writeStrToLog("search input -> : query: "+str(query))
-                
-            
-            print("------------self.model_path---------")
-            print(self.model_path)
             
             final_result = infer(
                 model=self.model_path,

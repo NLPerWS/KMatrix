@@ -16,6 +16,7 @@ cd /app/KMatrix
 nohup python flask_server.py >log_server.log 2>&1 &
 
 cd easy-flow
+chmod -R 777 /app/node_modules/
 mv  /app/node_modules/ ./
 nohup npm run dev >log_vue.log 2>&1 &
 

@@ -45,7 +45,7 @@ class TextPreprecess:
             doc = Document(file_path)
             text = '\n'.join([paragraph.text for paragraph in doc.paragraphs])
         else:
-            raise ValueError('Unsupported file format')
+            raise ValueError('Unsupported file format',file_extension)
 
         text = text.replace("\t"," ")
         return [text]

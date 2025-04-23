@@ -156,24 +156,30 @@ def loadKnowledgeByCatch(knowledge_path,elasticIndex,tag):
         if catchDataObj['path'] == knowledge_path or catchDataObj['path'] == elasticIndex:
             catch_flag = True
             catchData = catchDataObj['data']
-            
+    print('----------------------catch_flag-------------------\n',catch_flag)
+    
     if catch_flag == False:
         if elasticIndex != "":
+            print("--------------load es--------------------",elasticIndex)
             document_store = ElasticsearchDocumentStore(hosts = RootConfig.ES_HOST,index=elasticIndex,basic_auth=(RootConfig.ES_USERNAME,RootConfig.ES_PASSWORD))
             catchData = document_store._search_all_documents()
             catchData = list(map(lambda x:x.to_dict(),catchData))
-            catchData = [{**d, 'source': tag} if d['source'] is None else d for d in catchData]
+            for d in catchData:
+                if "source" not in d or d['source'] is None:
+                    d['source'] = tag
             RootConfig.tempPipeLineKnowledgeCatch.append({"path":elasticIndex,"data":catchData})
             
         
         elif knowledge_path != "":
+            print("--------------load file--------------------",knowledge_path)
             catchData = read_server_files(knowledge_path)
-            catchData = [{**d, 'source': tag} if d['source'] is None else d for d in catchData]
+            for d in catchData:
+                if "source" not in d or d['source'] is None:
+                    d['source'] = tag
             RootConfig.tempPipeLineKnowledgeCatch.append({"path":knowledge_path,"data":catchData})
             
         else:
             catchData = []
-            RootConfig.tempPipeLineKnowledgeCatch.append({"path":knowledge_path,"data":catchData})
 
     return catchData
 
@@ -371,7 +377,12 @@ def read_server_files(path):
             with open(file_path, 'r', encoding='utf-8') as file:
                 lines = [line for line in file]
             data = list(map(lambda x:{"id":x.split("\t")[0],"content":x},lines))
-                        
+                    
+        elif file_path.endswith(".txt"):
+            with open(file_path, 'r', encoding='utf-8') as file:
+                lines = [line for line in file]
+            data = list(map(lambda x:{"id":x.split("\t")[0],"content":x},lines))
+                                
         else:
             print(f"File types not currently supported : {file_path}")
 

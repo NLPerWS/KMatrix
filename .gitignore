@@ -208,3 +208,6 @@ kninjllm/llm_retriever/multi_text_to_sql
 kninjllm/llm_controller/control_tableQA.py
 kninjllm/llm_controller/control_text_to_sql.py
 kninjllm/llm_controller/control_webqsp.py
+
+/ES/**
+kmatrix.tar

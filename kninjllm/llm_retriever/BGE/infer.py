@@ -174,14 +174,14 @@ def load_index(model, emb, index_factory):
     metric = faiss.METRIC_INNER_PRODUCT
     index = faiss.index_factory(emb.shape[1], index_factory, metric)
 
-    co = faiss.GpuClonerOptions()
-    co.useFloat16 = True
-    index = faiss.index_cpu_to_gpu(faiss.StandardGpuResources(), 0, index, co)
+    # # 使用GPU 卡住就注释这段,变为cpu执行
+    # co = faiss.GpuClonerOptions()
+    # co.useFloat16 = True
+    # index = faiss.index_cpu_to_gpu(faiss.StandardGpuResources(), 0, index, co)
     
     index.train(emb)
     index.add(emb)
     return index
-
 
 
 
@@ -191,7 +191,10 @@ def infer(
     passage: List[Any],
     top_k: int,
 ):
-
+    if len(input_query) == 0 or len(input_query) == 1 and input_query[0] == "":
+        return []
+    if len(passage) == 0:
+        return []
     
     parser = HfArgumentParser([Args])
     args: Args = parser.parse_args_into_dataclasses()[0]
@@ -201,25 +204,35 @@ def infer(
     args.corpus_pth = passage
     args.k = top_k
     
-    print("-------------args--------------")
+    print("-------------args.model_path--------------")
     print(args.model_path)
-    
     
     model = get_model(args=args, device=0)
 
-    
-    
-    embeddings = []
-    for idx, data in enumerate(passage):
-        if data['BGE_embedding'] != None:
-            corpus_embedding = data['BGE_embedding']
-        else:
-            text = [data['content']]
-            corpus_embedding = model.encode_corpus(text, batch_size=1, max_length=512)
-            corpus_embedding = corpus_embedding.tolist()[0]
-        embeddings.append(corpus_embedding)
+    # # # function1
+    # embeddings = []
+    # for idx, data in enumerate(passage):
+    #     if "BGE_embedding" in data and data['BGE_embedding'] != None:
+    #         corpus_embedding = data['BGE_embedding']
+    #     else:
+    #         text = [data['content']]
+    #         corpus_embedding = model.encode_corpus(text, batch_size=1, max_length=512)
+    #         corpus_embedding = corpus_embedding.tolist()[0]
+    #     embeddings.append(corpus_embedding)
+    # embeddings = np.array(embeddings, dtype=np.float32)
+    # print(f"embeddings: {embeddings}")
+
+    # function2
+    if "BGE_embedding" in passage[0] and passage[0]['BGE_embedding'] != None:
+        embeddings = []
+        for idx, data in enumerate(passage):
+            embeddings.append(data['BGE_embedding'])
+    else:
+        text_list = [data['content'] for data in passage]
+        corpus_embedding = model.encode_corpus(text_list, batch_size=16, max_length=512)
+        embeddings = corpus_embedding.tolist()
     embeddings = np.array(embeddings, dtype=np.float32)
-    print(f"embeddings: {embeddings}")
+    # print(f"embeddings: {embeddings}")
     
     
     faiss_index = load_index(
@@ -248,10 +261,15 @@ def infer(
         single_query_result = []
         indice = indice[indice != -1].tolist()
         for i, ind in enumerate(indice):
+            try:
+                title = passage[ind]['content'].split("\t")[2]
+            except:
+                title = ""
+            
             single_query_result.append(
                 {
                     "id": passage[ind]['id'],
-                    "title": passage[ind]['content'].split("\t")[2],
+                    "title": title,
                     "content": passage[ind]['content'],
                     "score": scores[idx][i],
                 }

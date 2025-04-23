@@ -211,8 +211,8 @@ def infer(
     
     embeddings = []
     for idx, data in enumerate(passage):
-        if data['BGE_embedding'] != None:
-            corpus_embedding = data['BGE_embedding']
+        if "DPR_embedding" in data and data['DPR_embedding'] != None:
+            corpus_embedding = data['DPR_embedding']
         else:
             text = [data['content']]
             corpus_embedding = model.encode_corpus(text, batch_size=1, max_length=512)

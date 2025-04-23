@@ -43,6 +43,18 @@ module.exports = {
 
     cssSourceMap: true,
 
+    // watch: {
+    //     ignored: ["**/node_modules/**", "**/.git/**"],
+    //     usePolling: true, // 对某些文件系统有效
+    //     followSymlinks: false,
+    //     disableGlobbing: true,
+    //     interval: 1000,
+    //     binaryInterval: 3000,
+    //     awaitWriteFinish: {
+    //         stabilityThreshold: 2000,
+    //         pollInterval: 100,
+    //     },
+
   },
 
   build: {

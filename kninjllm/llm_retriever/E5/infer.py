@@ -201,7 +201,7 @@ def infer(
     
     embeddings = []
     for idx, data in enumerate(passage):
-        if data['E5_embedding'] != None:
+        if  "E5_embedding" in data and data['E5_embedding'] != None:
             corpus_embedding = data['E5_embedding']
         else:
             text = [data['content']]
