@@ -67,10 +67,11 @@ class RootConfig:
 
     # retriever_model_path
     # BGE model
-    BGE_model_path = model_path + "dir_model/retriever/BGE/BGE-Reproduce"
+    BGE_model_path = model_path + "dir_model/retriever/BAAI-bge-m3"
     if not os.path.exists(BGE_model_path):
         print("BGE Does not exist locally, requires online loading...")
-        BGE_model_path = "BAAI/bge-large-en-v1.5"
+        BGE_model_path = "BAAI/bge-m3"
+        
     # contriever model
     contriever_model_path = model_path + "dir_model/retriever/contriever/contriever_msmarco_model"
     
