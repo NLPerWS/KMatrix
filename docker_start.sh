@@ -38,8 +38,8 @@ fi
 
 # Note that the port number should not conflict with other services.
 docker run -idt --gpus all \
-    -p 10001:10001 \
-    -p 10002:10002 \
+    -p 10005:10005 \
+    -p 10006:10006 \
     -v $(pwd):/app/KMatrix/ \
     --name kmatrix_run leap233/kmatrix:v1 \
     /bin/bash '/app/KMatrix/startup.sh'

@@ -84,7 +84,7 @@ To get started with KMatrix, simply clone it from Github and install (requires P
     $ npm run dev
     $ cd KMatrix
     $ python flask_server.py
-    Visit KMatrix toolkit using the browser: http://yourserverip:8000
+    Visit KMatrix toolkit using the browser: http://yourserverip:10005
     
     3. Construct and Execute Flow diagram
     You can construct K-LLMs systems using our modular component and control-logic flow diagram, and execute it. Details of K-LLMs systems construction can be found in toolkit usage. You can use a flow diagram we have built (a K-LLMs system actively querying multiple knowledge interfaces) for a quick start:
