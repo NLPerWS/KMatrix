@@ -271,7 +271,7 @@ def main_evaluate_bak(args):
             try:
                 while True:
                     dict_obj = pickle.load(file)
-                    dict_obj['title'] = dict_obj['content'].split("\t")[2]
+                    dict_obj['title'] = ""
                     passages.append(dict_obj)
             except EOFError:
                 pass
@@ -390,7 +390,7 @@ def main_infer(args):
 
     if len(args.passages) > 0:
         passages = args.passages
-        passages = [{"title":p['content'].split("\t")[2],**p} for p in passages]
+        passages = [{"title":"",**p} for p in passages]
         data = args.dataSetList
         queries = [ex["question"] for ex in args.dataSetList]
         hit_passage_id_map = {}
@@ -458,7 +458,7 @@ def main_infer(args):
                 try:
                     while True:
                         dict_obj = pickle.load(file)
-                        dict_obj['title'] = dict_obj['content'].split("\t")[2]
+                        dict_obj['title'] = ""
                         passages.append(dict_obj)
                         del dict_obj
                 except EOFError:

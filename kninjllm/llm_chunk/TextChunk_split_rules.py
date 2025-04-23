@@ -20,7 +20,8 @@ class TextChunk_split_rules:
         split_str_list = []
         for doc in documents:
             doc_id = doc['id']
-            id, text, title = doc['content'].split('\t')
+            text =  doc['content']
+            title = doc['title']
             source = doc['source']
             result = []
             current_sentence = ''
@@ -40,7 +41,8 @@ class TextChunk_split_rules:
                     new_id = doc_id + "_" +calculate_hash([current_merged_sentence])+str(index)
                     split_str_list.append({
                         "doc_id":new_id,
-                        "text":new_id+"\t"+current_merged_sentence +"\t"+ title,
+                        "title":title,
+                        "text":current_merged_sentence,
                         "source":source
                     })
                     current_merged_sentence = sentence
@@ -48,15 +50,14 @@ class TextChunk_split_rules:
                 new_id = doc_id + "_" +calculate_hash([current_merged_sentence])
                 split_str_list.append({
                     "doc_id":new_id,
-                    "text":new_id+"\t"+current_merged_sentence +"\t"+ title,
+                    "title":title,
+                    "text":current_merged_sentence,
                     "source":source
                 })
 
         new_documents = []
         for index,s in enumerate(split_str_list):
-            id, text, title = s['text'].split('\t')
-            new_documents.append({"id":s['doc_id'],"content":s['text'],"source":s['source']})
-
+            new_documents.append({"id":s['doc_id'],"content":s['text'],"source":s['source'],"title":""})
         return new_documents
         
         

@@ -217,7 +217,7 @@ class InterfaceExecute:
     def execute_by_local(self,input):
         self.contriever.searchDataList = self.data_list
         res = self.contriever.run(query_obj = {"question":input})['final_result'][0][0]
-        knowl = res['content'].split("\t")[1]
+        knowl = res['content']
         # print(res_str)
         return input,input,knowl
                 

@@ -261,15 +261,10 @@ def infer(
         single_query_result = []
         indice = indice[indice != -1].tolist()
         for i, ind in enumerate(indice):
-            try:
-                title = passage[ind]['content'].split("\t")[2]
-            except:
-                title = ""
-            
             single_query_result.append(
                 {
                     "id": passage[ind]['id'],
-                    "title": title,
+                    "title": "",
                     "content": passage[ind]['content'],
                     "score": scores[idx][i],
                 }

@@ -376,12 +376,12 @@ def read_server_files(path):
         elif file_path.endswith(".csv") or file_path.endswith(".tsv"):
             with open(file_path, 'r', encoding='utf-8') as file:
                 lines = [line for line in file]
-            data = list(map(lambda x:{"id":x.split("\t")[0],"content":x},lines))
+            data = list(map(lambda x:{"id":calculate_hash([x]),"content":x},lines))
                     
         elif file_path.endswith(".txt"):
             with open(file_path, 'r', encoding='utf-8') as file:
                 lines = [line for line in file]
-            data = list(map(lambda x:{"id":x.split("\t")[0],"content":x},lines))
+            data = list(map(lambda x:{"id":calculate_hash([x]),"content":x},lines))
                                 
         else:
             print(f"File types not currently supported : {file_path}")
@@ -409,7 +409,7 @@ def read_server_files(path):
 def EmbeddingByRetriever(documents,retrieverNameList):
     print("utils -> EmbeddingByRetriever ....",retrieverNameList)
     
-    paramList = list(map(lambda x:{'id':x['id'],"title":x['content'].split("\t")[2],"content":x['content'].split("\t")[1]},documents))
+    paramList = list(map(lambda x:{'id':x['id'],"title":"","content":x['content']},documents))
     
     for retrieverName in retrieverNameList:
         id_data_config = {}

@@ -62,9 +62,7 @@ class Contriever_Retriever:
             if len(knowledge) > 0:
                 self.searchDataList = knowledge
                 for index,know in enumerate(self.searchDataList):
-                    if len(know['content'].split("\t")) != 3:
-                        know['content'] = know['source']+str(index) + "\t" + know['content'].replace("\t","") + "\t" + "None"
-                    know['title'] = know['content'].split("\t")[2]
+                    know['title'] = ""
                     
             if knowledge_path != "":
                 self.knowledge_path = knowledge_path

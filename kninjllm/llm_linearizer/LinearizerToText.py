@@ -69,8 +69,6 @@ class LinearizerToText:
             tempValue = value
             input_list = []
             if isinstance(tempValue,list) and isinstance(tempValue[0],dict) and 'content' in tempValue[0] and tempValue[0]['content'] != "" and tempValue[0]['content'] != None:
-                if tempValue[0]['content'] == None or tempValue[0]['content'] == "" or len(tempValue[0]['content'].split("\t")) != 3:
-                    raise ValueError("The text knowledge format is incorrect. Please check....")
                 self.valueList.extend(tempValue)
             
             if isinstance(tempValue,list) and isinstance(tempValue[0],dict) and "header" in tempValue[0] and "rows" in tempValue[0] \
@@ -125,9 +123,9 @@ class LinearizerToText:
         if self.count > self.knowledge_line_count:
             raise ValueError("Error in initial parameters of linearizer. Please check...")
         
-        new_this_step_list = split_by_length(max_length=self.max_length,doc_list=this_step_list)
+        # this_step_list = split_by_length(max_length=self.max_length,doc_list=this_step_list)
         
-        self.valueList.extend(new_this_step_list)
+        self.valueList.extend(this_step_list)
         
         print("finally final_knowledge len:  \n",len(self.valueList))
         

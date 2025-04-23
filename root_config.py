@@ -19,11 +19,11 @@ class RootConfig:
     
     # ES connection address
     ES_HOST = "http://127.0.0.1:9200"
-    ES_USERNAME = "username"
-    ES_PASSWORD = "password"
+    ES_USERNAME = ""
+    ES_PASSWORD = ""
     
     # GPU used in the project
-    CUDA_VISIBLE_DEVICES = "3"
+    CUDA_VISIBLE_DEVICES = "4,5"
     
     # OPENAI api_key
     openai_api_key = "sk-xxxx"
