@@ -15,7 +15,7 @@ class RootConfig:
         root_path = root_path + "/"
     
     # Server PORT
-    SERVER_PORT = "8002"
+    SERVER_PORT = "10006"
     
     # ES connection address
     ES_HOST = "http://127.0.0.1:9200"
