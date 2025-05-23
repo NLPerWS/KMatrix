@@ -353,9 +353,7 @@ We report experimental results from two aspects: Knowledge access performance ev
 
 ## 🔖 License
 
-Apache 2.0 License.
-
- 
+This project is free for academic use. If you want to use it commercially, please contact us. We reserve all copyrights of this project.
 
 ## :dove:  Citing
 If you use KMatrix in your research, please cite:
